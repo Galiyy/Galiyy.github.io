@@ -1746,7 +1746,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #c654ff;
+  background: #ffff9a;
 }
 .feed-link,
 .chat {
@@ -2940,7 +2940,7 @@ ul.breadcrumb li+li:last-child {
 }
 @media screen and (min-width: 1200px) {
   body {
-    background-image: url("/images/back.png");
+/*background-image: url(/images/back.png);*/
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: 50% 50%;
@@ -2950,19 +2950,16 @@ ul.breadcrumb li+li:last-child {
     color: #eee;
   }
   .header-inner {
-    border-radius: 20px;
+/*border-radius: 20px;*/
     background: rgba(255,255,255,0.8);
   }
   .content {
-    border-radius: 20px;
+/*border-radius: 20px; */
     padding: 30px 60px 30px 60px;
     background: rgba(255,255,255,0.8) none repeat scroll !important;
   }
   .sidebar {
     background: rgba(255,255,255,0);
-    border-radius: 20px;
-  }
-  .sidebar-inner {
     border-radius: 20px;
   }
 }
