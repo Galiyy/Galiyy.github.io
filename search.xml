@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Python创建进程的三种方式]]></title>
+    <url>%2F2019%2F07%2F09%2FPython%E5%88%9B%E5%BB%BA%E8%BF%9B%E7%A8%8B%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F%2F</url>
+    <content type="text"><![CDATA[python创建进程的三种方式 fork创建 multiprocessing 模块 Process类 继承Process类, 子类创建 1.fork创建os.fork方法会创建出一个子进程，原进程（父进程）返回一个大于零的值（即ret &gt; 0），这个值恰好是子进程的pid；而创建的新的子进程返回的值为零（即ret = 0）fork方法创建进程不适用于window系统，window系统中没有这个系统调用 1234567891011import osret = os.fork() if ret == 0: #子进程 print("Sub process pid = %d, Sub process ppid = %d" % (os.getpid(), os.getppid()))else: #父进程 print("Parent Process ret = %d" % ret) print("Parent Process pid = %d" % os.getpid()) 执行效果: 123Parent Process ret = 2757Parent Process pid = 2756Sub process pid = 2757, Sub process ppid = 2756 2.multiprocessing 模块 Process类通过Multiprocessing模块中的Process类,创建Process对象,target参数传入的是子进程执行的函数戴码, 通过start方法开启子进程 123456789101112131415161718from multiprocessing import Processimport timeimport osdef test(): time.sleep(2) print('子进程Process (pid:&#123;&#125;) starting...'.format(os.getpid())) if __name__ == '__main__': p = Process(target=test) p.start() p.join(3) # （堵塞）等待子进程结束，再执行父进程 join(timout) 超时时间 # 传入 1s 父进程等待1s，若超过1秒，子进程未结束，父进程先运行 # 传入3s 等待时间未结束，子进程结束，父进程运行 # 如果没有传入参数 父进程只有等待子进程结束，再运行 print('父进程Process (pid:&#123;&#125;) starting...'.format(os.getpid())) 注:fork方法创建的进程，主进程不会等待子进程结束再结束Process类创建的进程，默认情况主进程会等待子进程都结束，再结束 3.继承Process类, 子类创建创建一个子类, 继承Process类, 重写run方法, 实例出一个对象, 调用start方法运行子进程,调用start方法，会自动调用run方法 1234567891011121314151617from multiprocessing import Processimport timeimport osclass NewProcess(Process): #继承Process类 def run(self): # 重写run方法 while True: print('子进程Process (pid:&#123;&#125;) starting...'.format(os.getpid())) time.sleep(1)if __name__ == '__main__': p = NewProcess() # 实例化一个子进程对象 p.start() # 运行子进程的代码(即run方法) while True: print('父进程Process (pid:&#123;&#125;) starting...'.format(os.getpid())) time.sleep(1)]]></content>
+      <categories>
+        <category>python系统编程</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[我的第一篇博客]]></title>
     <url>%2F2019%2F06%2F30%2F%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%2F</url>
     <content type="text"><![CDATA[这是我的第一篇博客 Markdown常用语法1.标题 1234567语法:# 一级标题## 二级标题### 三级标题#### 四级级标题##### 五级标题###### 六级标题 2.字体 1加粗: *字体* 效果: 字体 1斜体: **字体** 效果: 字体 1斜体加粗: ***字体*** 效果: 字体 1删除线: ~~字体~~ 效果: 字体 3.代码格式 编程语言可以更换格式: 效果： 1print("hello,world~"); 4.插入图片 在根目录sourse文件夹里创建一个images文件夹, 将图片放在 source/images/ 下 1格式: ![image](/images/xxx.jpg) 效果如下: 5.引用 在引用的文字前加&gt;，可以无限加… 1引用: &gt; 效果: 引用 引用 引用 引用 6.分割线 三个或者三个以上的 - 或者 * 都可以 1格式: ---或*** 7.超链接 12格式:[超链接名](超链接地址 "超链接title") 效果:百度淘宝 8.列表 1234无序列表: * 这是一个列表 + 这是一个列表 - 这是一个列表 效果: 这是一个列表 这是一个列表 这是一个列表 12345有序列表: 1. 这是一个列表 2. 这是一个列表 3. 这是一个列表 4. 这是一个列表 效果: 这是一个列表 这是一个列表 这是一个列表 这是一个列表 9.表格 表格内容对齐方式: -： 左对齐:-: ： 居中对齐-: ： 右对齐 123456格式: 表头1 | 表头2 | 表头3 | 表头4 - | :- | :-: | -: | 默认左对齐|左对齐|居中对齐|右对齐 默认左对齐|左对齐|居中对齐|右对齐 默认左对齐|左对齐|居中对齐|右对齐 效果: 表头1 表头2 表头3 表头4 默认左对齐 左对齐 居中对齐 右对齐 默认左对齐 左对齐 居中对齐 右对齐 默认左对齐 左对齐 居中对齐 右对齐 10.全文阅读在文章要不显示的部分前，添加以下内容 1格式: &lt;!-- more --&gt;]]></content>

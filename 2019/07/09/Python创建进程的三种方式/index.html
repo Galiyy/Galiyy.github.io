@@ -101,22 +101,18 @@
 
 
 
-  <meta name="description" content="这是我的第一篇博客">
-<meta name="keywords" content="导航,分享">
+  <meta name="description" content="python创建进程的三种方式 fork创建 multiprocessing 模块 Process类 继承Process类, 子类创建">
+<meta name="keywords" content="python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我的第一篇博客">
-<meta property="og:url" content="http://yoursite.com/2019/06/30/我的第一篇博客/index.html">
+<meta property="og:title" content="Python创建进程的三种方式">
+<meta property="og:url" content="http://yoursite.com/2019/07/09/Python创建进程的三种方式/index.html">
 <meta property="og:site_name" content="Galiyy&#39;blog">
-<meta property="og:description" content="这是我的第一篇博客">
+<meta property="og:description" content="python创建进程的三种方式 fork创建 multiprocessing 模块 Process类 继承Process类, 子类创建">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/images/test/test.jpg">
-<meta property="og:image" content="http://yoursite.com/images/test/test3.png">
-<meta property="og:image" content="http://yoursite.com/images/test/test2.jpg">
-<meta property="og:updated_time" content="2019-07-08T08:40:10.584Z">
+<meta property="og:updated_time" content="2019-07-09T17:07:22.533Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的第一篇博客">
-<meta name="twitter:description" content="这是我的第一篇博客">
-<meta name="twitter:image" content="http://yoursite.com/images/test/test.jpg">
+<meta name="twitter:title" content="Python创建进程的三种方式">
+<meta name="twitter:description" content="python创建进程的三种方式 fork创建 multiprocessing 模块 Process类 继承Process类, 子类创建">
 
 
 
@@ -124,7 +120,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/06/30/我的第一篇博客/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/09/Python创建进程的三种方式/">
 
 
 
@@ -134,7 +130,7 @@
   };
 </script>
 
-  <title>我的第一篇博客 | Galiyy'blog</title>
+  <title>Python创建进程的三种方式 | Galiyy'blog</title>
   
 
 
@@ -362,7 +358,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/30/我的第一篇博客/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/09/Python创建进程的三种方式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Galiyy">
@@ -379,7 +375,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">我的第一篇博客
+          <h1 class="post-title" itemprop="name headline">Python创建进程的三种方式
 
               
             
@@ -405,7 +401,7 @@
                 
               
 
-              <time title="创建时间：2019-06-30 11:43:24" itemprop="dateCreated datePublished" datetime="2019-06-30T11:43:24+08:00">2019-06-30</time>
+              <time title="创建时间：2019-07-09 23:59:46" itemprop="dateCreated datePublished" datetime="2019-07-09T23:59:46+08:00">2019-07-09</time>
             </span>
           
 
@@ -420,7 +416,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-07-08 16:40:10" itemprop="dateModified" datetime="2019-07-08T16:40:10+08:00">2019-07-08</time>
+                <time title="修改时间：2019-07-10 01:07:22" itemprop="dateModified" datetime="2019-07-10T01:07:22+08:00">2019-07-10</time>
               </span>
             
           
@@ -434,7 +430,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/其他/" itemprop="url" rel="index"><span itemprop="name">其他</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python系统编程/" itemprop="url" rel="index"><span itemprop="name">python系统编程</span></a></span>
 
                 
                 
@@ -480,126 +476,30 @@
       
 
       
-        <p><img src="/images/test/test.jpg" alt="image"></p>
-<h1 id="这是我的第一篇博客"><a href="#这是我的第一篇博客" class="headerlink" title="这是我的第一篇博客"></a>这是我的第一篇博客</h1><a id="more"></a>
-
-<h2 id="Markdown常用语法"><a href="#Markdown常用语法" class="headerlink" title="Markdown常用语法"></a>Markdown常用语法</h2><h4 id="1-标题"><a href="#1-标题" class="headerlink" title="1.标题"></a>1.标题</h4><hr>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">语法:</span><br><span class="line"><span class="comment"># 一级标题</span></span><br><span class="line"><span class="comment">## 二级标题</span></span><br><span class="line"><span class="comment">### 三级标题</span></span><br><span class="line"><span class="comment">#### 四级级标题</span></span><br><span class="line"><span class="comment">##### 五级标题</span></span><br><span class="line"><span class="comment">###### 六级标题</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="2-字体"><a href="#2-字体" class="headerlink" title="2.字体"></a>2.字体</h4><hr>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">加粗: *字体*</span><br></pre></td></tr></table></figure>
-
-<p>效果: <em>字体</em></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">斜体: **字体**</span><br></pre></td></tr></table></figure>
-
-<p>效果: <strong>字体</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">斜体加粗: ***字体***</span><br></pre></td></tr></table></figure>
-
-<p>效果: <strong><em>字体</em></strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">删除线: ~~字体~~</span><br></pre></td></tr></table></figure>
-
-<p>效果: <del>字体</del></p>
-<hr>
-<h4 id="3-代码格式"><a href="#3-代码格式" class="headerlink" title="3.代码格式"></a>3.代码格式</h4><hr>
-<p>编程语言可以更换<br>格式:<br><img src="/images/test/test3.png" alt="image"></p>
-<p>效果：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"hello,world~"</span>);</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="4-插入图片"><a href="#4-插入图片" class="headerlink" title="4.插入图片"></a>4.插入图片</h4><hr>
-<p>在根目录sourse文件夹里创建一个images文件夹, 将图片放在 source/images/ 下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式: ![image](/images/xxx.jpg)</span><br></pre></td></tr></table></figure>
-
-<p>效果如下:</p>
-<p><img src="/images/test/test2.jpg" alt="image"></p>
-<hr>
-<h4 id="5-引用"><a href="#5-引用" class="headerlink" title="5.引用"></a>5.引用</h4><hr>
-<p>在引用的文字前加&gt;，可以无限加…</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">引用: &gt;</span><br></pre></td></tr></table></figure>
-
-<p>效果: </p>
-<blockquote>
-<p>引用</p>
-<blockquote>
-<p>引用</p>
-<blockquote>
-<p>引用</p>
-<blockquote>
-<p>引用</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<hr>
-<h4 id="6-分割线"><a href="#6-分割线" class="headerlink" title="6.分割线"></a>6.分割线</h4><hr>
-<p>三个或者三个以上的 - 或者 * 都可以</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式: ---或***</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="7-超链接"><a href="#7-超链接" class="headerlink" title="7.超链接"></a>7.超链接</h4><hr>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">格式:</span><br><span class="line">[超链接名](超链接地址 <span class="string">"超链接title"</span>)</span><br></pre></td></tr></table></figure>
-
-<p>效果:<br><a href="https://www.baidu.com" title="点我进行搜索~" target="_blank" rel="noopener">百度</a><br><a href="https://www.taobao.com" title="点我进行购物~" target="_blank" rel="noopener">淘宝</a></p>
-<hr>
-<h4 id="8-列表"><a href="#8-列表" class="headerlink" title="8.列表"></a>8.列表</h4><hr>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">无序列表:</span><br><span class="line">	* 这是一个列表</span><br><span class="line">	+ 这是一个列表</span><br><span class="line">	- 这是一个列表</span><br></pre></td></tr></table></figure>
-
-<p>效果:</p>
-<ul>
-<li>这是一个列表</li>
+        <h2 id="python创建进程的三种方式"><a href="#python创建进程的三种方式" class="headerlink" title="python创建进程的三种方式"></a>python创建进程的三种方式</h2><ul>
+<li>fork创建</li>
+<li>multiprocessing 模块 Process类</li>
+<li>继承Process类, 子类创建</li>
 </ul>
-<ul>
-<li>这是一个列表</li>
-</ul>
-<ul>
-<li>这是一个列表</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">有序列表:</span><br><span class="line">	<span class="number">1.</span> 这是一个列表</span><br><span class="line">	<span class="number">2.</span> 这是一个列表</span><br><span class="line">	<span class="number">3.</span> 这是一个列表</span><br><span class="line">	<span class="number">4.</span> 这是一个列表</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 
-<p>效果:</p>
-<ol>
-<li>这是一个列表</li>
-<li>这是一个列表</li>
-<li>这是一个列表</li>
-<li>这是一个列表</li>
-</ol>
+<h3 id="1-fork创建"><a href="#1-fork创建" class="headerlink" title="1.fork创建"></a>1.fork创建</h3><p>os.fork方法会创建出一个子进程，原进程（父进程）返回一个大于零的值（即ret &gt; 0），这个值恰好是子进程的pid；而创建的新的子进程返回的值为零（即ret = 0）<br>fork方法创建进程不适用于window系统，window系统中没有这个系统调用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">ret = os.fork()  </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ret == <span class="number">0</span>:</span><br><span class="line">	<span class="comment">#子进程</span></span><br><span class="line">	print(<span class="string">"Sub process pid = %d, Sub process ppid = %d"</span> % (os.getpid(), os.getppid()))</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="comment">#父进程</span></span><br><span class="line">	print(<span class="string">"Parent Process ret = %d"</span> % ret)</span><br><span class="line">	print(<span class="string">"Parent Process pid = %d"</span> % os.getpid())</span><br></pre></td></tr></table></figure>
+
+<p>执行效果:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Parent Process ret = <span class="number">2757</span></span><br><span class="line">Parent Process pid = <span class="number">2756</span></span><br><span class="line">Sub process pid = <span class="number">2757</span>, Sub process ppid = <span class="number">2756</span></span><br></pre></td></tr></table></figure>
+
 <hr>
-<h4 id="9-表格"><a href="#9-表格" class="headerlink" title="9.表格"></a>9.表格</h4><hr>
-<p>表格内容对齐方式:<br>   -： 左对齐<br>:-: ： 居中对齐<br>-:  ： 右对齐</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">格式:</span><br><span class="line">	表头<span class="number">1</span> | 表头<span class="number">2</span> | 表头<span class="number">3</span> | 表头<span class="number">4</span></span><br><span class="line">	- | :- | :-: | -: |</span><br><span class="line">	默认左对齐|左对齐|居中对齐|右对齐</span><br><span class="line">	默认左对齐|左对齐|居中对齐|右对齐</span><br><span class="line">	默认左对齐|左对齐|居中对齐|右对齐</span><br></pre></td></tr></table></figure>
+<h3 id="2-multiprocessing-模块-Process类"><a href="#2-multiprocessing-模块-Process类" class="headerlink" title="2.multiprocessing 模块 Process类"></a>2.multiprocessing 模块 Process类</h3><p>通过Multiprocessing模块中的Process类,创建Process对象,target参数传入的是子进程执行的函数戴码, 通过start方法开启子进程</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    print(<span class="string">'子进程Process (pid:&#123;&#125;) starting...'</span>.format(os.getpid()))  </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line"></span><br><span class="line">    p = Process(target=test)</span><br><span class="line">    p.start()</span><br><span class="line">    p.join(<span class="number">3</span>)  <span class="comment"># （堵塞）等待子进程结束，再执行父进程 join(timout)  超时时间</span></span><br><span class="line">    			<span class="comment">#  传入 1s 父进程等待1s，若超过1秒，子进程未结束，父进程先运行</span></span><br><span class="line">    			<span class="comment"># 传入3s  等待时间未结束，子进程结束，父进程运行</span></span><br><span class="line">    			<span class="comment">#   如果没有传入参数 父进程只有等待子进程结束，再运行</span></span><br><span class="line"></span><br><span class="line">    print(<span class="string">'父进程Process (pid:&#123;&#125;) starting...'</span>.format(os.getpid()))</span><br></pre></td></tr></table></figure>
 
-<p>效果:</p>
-<table>
-<thead>
-<tr>
-<th>表头1</th>
-<th align="left">表头2</th>
-<th align="center">表头3</th>
-<th align="right">表头4</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>默认左对齐</td>
-<td align="left">左对齐</td>
-<td align="center">居中对齐</td>
-<td align="right">右对齐</td>
-</tr>
-<tr>
-<td>默认左对齐</td>
-<td align="left">左对齐</td>
-<td align="center">居中对齐</td>
-<td align="right">右对齐</td>
-</tr>
-<tr>
-<td>默认左对齐</td>
-<td align="left">左对齐</td>
-<td align="center">居中对齐</td>
-<td align="right">右对齐</td>
-</tr>
-</tbody></table>
-<h4 id="10-全文阅读"><a href="#10-全文阅读" class="headerlink" title="10.全文阅读"></a>10.全文阅读</h4><p>在文章要不显示的部分前，添加以下内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式: &lt;!-- more --&gt;</span><br></pre></td></tr></table></figure>
+<p>注:<br><strong><em>fork方法创建的进程，主进程不会等待子进程结束再结束</em></strong><br><strong><em>Process类创建的进程，默认情况主进程会等待子进程都结束，再结束</em></strong></p>
+<hr>
+<h3 id="3-继承Process类-子类创建"><a href="#3-继承Process类-子类创建" class="headerlink" title="3.继承Process类, 子类创建"></a>3.继承Process类, 子类创建</h3><p>创建一个子类, 继承Process类, 重写run方法, 实例出一个对象, 调用start方法运行子进程,<br><strong><em>调用start方法，会自动调用run方法</em></strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NewProcess</span><span class="params">(Process)</span>:</span>   <span class="comment">#继承Process类</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span>  <span class="comment"># 重写run方法</span></span><br><span class="line">		<span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">			print(<span class="string">'子进程Process (pid:&#123;&#125;) starting...'</span>.format(os.getpid()))</span><br><span class="line">			time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	p = NewProcess()   <span class="comment"># 实例化一个子进程对象</span></span><br><span class="line">	p.start()  <span class="comment"># 运行子进程的代码(即run方法)</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">		print(<span class="string">'父进程Process (pid:&#123;&#125;) starting...'</span>.format(os.getpid()))</span><br><span class="line">		time.sleep(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<hr>
+
       
     </div>
 
@@ -625,9 +525,7 @@
         
         <div class="post-tags">
           
-            <a href="/tags/导航/" rel="tag"># 导航</a>
-          
-            <a href="/tags/分享/" rel="tag"># 分享</a>
+            <a href="/tags/python/" rel="tag"># python</a>
           
         </div>
       
@@ -640,8 +538,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/30/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/06/30/我的第一篇博客/" rel="next" title="我的第一篇博客">
+                <i class="fa fa-chevron-left"></i> 我的第一篇博客
               </a>
             
           </div>
@@ -649,10 +547,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/09/Python创建进程的三种方式/" rel="prev" title="Python创建进程的三种方式">
-                Python创建进程的三种方式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -831,7 +725,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#这是我的第一篇博客"><span class="nav-number">1.</span> <span class="nav-text">这是我的第一篇博客</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Markdown常用语法"><span class="nav-number">1.1.</span> <span class="nav-text">Markdown常用语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-标题"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">1.标题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-字体"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">2.字体</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-代码格式"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">3.代码格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-插入图片"><span class="nav-number">1.1.0.4.</span> <span class="nav-text">4.插入图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-引用"><span class="nav-number">1.1.0.5.</span> <span class="nav-text">5.引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-分割线"><span class="nav-number">1.1.0.6.</span> <span class="nav-text">6.分割线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-超链接"><span class="nav-number">1.1.0.7.</span> <span class="nav-text">7.超链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-列表"><span class="nav-number">1.1.0.8.</span> <span class="nav-text">8.列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-表格"><span class="nav-number">1.1.0.9.</span> <span class="nav-text">9.表格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-全文阅读"><span class="nav-number">1.1.0.10.</span> <span class="nav-text">10.全文阅读</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#python创建进程的三种方式"><span class="nav-number">1.</span> <span class="nav-text">python创建进程的三种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-fork创建"><span class="nav-number">1.1.</span> <span class="nav-text">1.fork创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-multiprocessing-模块-Process类"><span class="nav-number">1.2.</span> <span class="nav-text">2.multiprocessing 模块 Process类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-继承Process类-子类创建"><span class="nav-number">1.3.</span> <span class="nav-text">3.继承Process类, 子类创建</span></a></li></ol></li></ol></div>
             
 
           </div>
