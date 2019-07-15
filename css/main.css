@@ -1752,7 +1752,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #f56a49;
+  background: #e2368e;
 }
 .feed-link,
 .chat {
@@ -2966,6 +2966,6 @@ ul.breadcrumb li+li:last-child {
   }
   .sidebar {
     background: rgba(255,255,255,0);
-    border-radius: 20px;
+/*border-radius: 20px;*/
   }
 }
