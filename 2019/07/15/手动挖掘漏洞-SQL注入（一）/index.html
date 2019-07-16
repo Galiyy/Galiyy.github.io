@@ -101,18 +101,18 @@
 
 
 
-  <meta name="description" content="SQL注入 所谓SQL注入，就是通过把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。具体来说，它是利用现有应用程序，将（恶意的）SQL命令注入到后台数据库引擎执行的能力，它可以通过在Web表单中输入（恶意）SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句。">
+  <meta name="description" content="SQL注入 所谓SQL注入，就是通过使用POST或GET方式把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。具体来说，它是利用现有应用程序，将（恶意的）SQL命令注入到后台数据库引擎执行的能力，它可以通过在Web表单中输入（恶意）SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句。">
 <meta name="keywords" content="SQL注入,Web渗透,DVWA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="手动挖掘漏洞---SQL注入（一）">
 <meta property="og:url" content="http://yoursite.com/2019/07/15/手动挖掘漏洞-SQL注入（一）/index.html">
 <meta property="og:site_name" content="Galiyy&#39;blog">
-<meta property="og:description" content="SQL注入 所谓SQL注入，就是通过把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。具体来说，它是利用现有应用程序，将（恶意的）SQL命令注入到后台数据库引擎执行的能力，它可以通过在Web表单中输入（恶意）SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句。">
+<meta property="og:description" content="SQL注入 所谓SQL注入，就是通过使用POST或GET方式把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。具体来说，它是利用现有应用程序，将（恶意的）SQL命令注入到后台数据库引擎执行的能力，它可以通过在Web表单中输入（恶意）SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-15T13:26:08.434Z">
+<meta property="og:updated_time" content="2019-07-15T16:56:44.436Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手动挖掘漏洞---SQL注入（一）">
-<meta name="twitter:description" content="SQL注入 所谓SQL注入，就是通过把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。具体来说，它是利用现有应用程序，将（恶意的）SQL命令注入到后台数据库引擎执行的能力，它可以通过在Web表单中输入（恶意）SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句。">
+<meta name="twitter:description" content="SQL注入 所谓SQL注入，就是通过使用POST或GET方式把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。具体来说，它是利用现有应用程序，将（恶意的）SQL命令注入到后台数据库引擎执行的能力，它可以通过在Web表单中输入（恶意）SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句。">
 
 
 
@@ -405,13 +405,23 @@
                 
               
 
-              <time title="创建时间：2019-07-15 20:50:09 / 修改时间：21:26:08" itemprop="dateCreated datePublished" datetime="2019-07-15T20:50:09+08:00">2019-07-15</time>
+              <time title="创建时间：2019-07-15 20:50:09" itemprop="dateCreated datePublished" datetime="2019-07-15T20:50:09+08:00">2019-07-15</time>
             </span>
           
 
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-16 00:56:44" itemprop="dateModified" datetime="2019-07-16T00:56:44+08:00">2019-07-16</time>
+              </span>
             
           
 
@@ -471,9 +481,45 @@
 
       
         <h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><blockquote>
-<p>所谓SQL注入，就是通过把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。具体来说，它是利用现有应用程序，将（恶意的）SQL命令注入到后台数据库引擎执行的能力，它可以通过在Web表单中输入（恶意）SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句。</p>
+<p>所谓SQL注入，就是通过使用POST或GET方式把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。具体来说，它是利用现有应用程序，将（恶意的）SQL命令注入到后台数据库引擎执行的能力，它可以通过在Web表单中输入（恶意）SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句。</p>
 </blockquote>
 <a id="more"></a>
+
+<p><font color="red">程序存在SQL注入，追其原因，就是代码或编码的不完善</font></p>
+<p>如常见的用户登陆，举个简单的例子：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">WHERE</span> <span class="keyword">user</span>=<span class="string">'uname'</span> <span class="keyword">AND</span> <span class="keyword">password</span>=<span class="string">'pass'</span></span><br></pre></td></tr></table></figure>
+
+<p>一般情况下，通过布尔判断，只要SQL语句为真，即为登陆成功。这句SQL语句意思是查询users表中是否存在用户名为uname，密码为pass的用户，语句为真即登陆成功，语句为假即登陆失败。</p>
+<p>若在不知道用户名和密码的情况下，我们可以将【pass】替换为【’ or 1=1 – 】</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">WHERE</span> <span class="keyword">user</span>=<span class="string">'uname'</span> <span class="keyword">AND</span> <span class="keyword">password</span>=<span class="string">''</span> <span class="keyword">or</span> <span class="number">1</span>=<span class="number">1</span> <span class="comment">-- '</span></span><br></pre></td></tr></table></figure>
+
+<p>注:【– 】 可以用来注释掉后边的语句。<br>根据布尔判断，这句话就可以成真了，登陆成功</p>
+<p><strong>一些简单判断是否存在SQL注入的方法：</strong></p>
+<ul>
+<li><p>基于报错的检测方法(low)</p>
+<ul>
+<li>‘ “ % ( )</li>
+</ul>
+</li>
+<li><p>基于布尔的检测</p>
+<ul>
+<li>1’ and ‘1’=’1     /     1’ and ‘1</li>
+<li>1’ and ‘1’=’2     /     1’ and ‘0</li>
+</ul>
+</li>
+<li><p>表列数/显示信息位于哪一列</p>
+<ul>
+<li>‘ order by 9–+   #按查询列号<br>  <span style="background-color: yellow"><em>（如select * from table order by n 表示select里面的第n个字段）</em></span><br>  select * 时表字段数=查询字段数</li>
+</ul>
+</li>
+<li><p>联合查询</p>
+<ul>
+<li>‘ union select 1,2–+</li>
+<li>‘ union all select database(),2–+<br><span style="background-color: yellow"><em>（联合查询前后语句的查询字段数要相等）</em></span></li>
+</ul>
+</li>
+</ul>
+
       
     </div>
 
