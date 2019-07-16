@@ -109,10 +109,19 @@
 <meta property="og:site_name" content="Galiyy&#39;blog">
 <meta property="og:description" content="SQL注入 所谓SQL注入，就是通过使用POST或GET方式把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。具体来说，它是利用现有应用程序，将（恶意的）SQL命令注入到后台数据库引擎执行的能力，它可以通过在Web表单中输入（恶意）SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-15T16:56:44.436Z">
+<meta property="og:image" content="http://yoursite.com/images/20190715/img1.png">
+<meta property="og:image" content="http://yoursite.com/images/20190715/img2.png">
+<meta property="og:image" content="http://yoursite.com/images/20190715/img3.png">
+<meta property="og:image" content="http://yoursite.com/images/20190715/img4.png">
+<meta property="og:image" content="http://yoursite.com/images/20190715/img5.png">
+<meta property="og:image" content="http://yoursite.com/images/20190715/img6.png">
+<meta property="og:image" content="http://yoursite.com/images/20190715/img7.png">
+<meta property="og:image" content="http://yoursite.com/images/20190715/img8.png">
+<meta property="og:updated_time" content="2019-07-16T06:21:40.982Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手动挖掘漏洞---SQL注入（一）">
 <meta name="twitter:description" content="SQL注入 所谓SQL注入，就是通过使用POST或GET方式把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。具体来说，它是利用现有应用程序，将（恶意的）SQL命令注入到后台数据库引擎执行的能力，它可以通过在Web表单中输入（恶意）SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句。">
+<meta name="twitter:image" content="http://yoursite.com/images/20190715/img1.png">
 
 
 
@@ -420,7 +429,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-07-16 00:56:44" itemprop="dateModified" datetime="2019-07-16T00:56:44+08:00">2019-07-16</time>
+                <time title="修改时间：2019-07-16 14:21:40" itemprop="dateModified" datetime="2019-07-16T14:21:40+08:00">2019-07-16</time>
               </span>
             
           
@@ -503,8 +512,8 @@
 </li>
 <li><p>基于布尔的检测</p>
 <ul>
-<li>1’ and ‘1’=’1     /     1’ and ‘1</li>
-<li>1’ and ‘1’=’2     /     1’ and ‘0</li>
+<li>1’ and ‘1’=’1 &emsp;或&emsp; 1’ and ‘1</li>
+<li>1’ and ‘1’=’2 &emsp;或&emsp; 1’ and ‘0</li>
 </ul>
 </li>
 <li><p>表列数/显示信息位于哪一列</p>
@@ -519,6 +528,10 @@
 </ul>
 </li>
 </ul>
+<p>下面用metasploitable中的dvwa(low)进行演示<br><img src="/images/20190715/img1.png" alt="imgage"><br>这个提交表单作用是根据用户输入id ，返回用户的first_name、subname；</p>
+<p>当我们不根据规则，输入一些不规范的数据，如“’”<br><img src="/images/20190715/img2.png" alt="imgage"><br><img src="/images/20190715/img3.png" alt="imgage"><br>网页报错了，并返回了信息，可以判断是MySQL的数据库，错误原因是引号无法闭合。<br>也可以利用布尔值判断<br><img src="/images/20190715/img4.png" alt="imgage"><br><img src="/images/20190715/img5.png" alt="imgage"><br><img src="/images/20190715/img6.png" alt="imgage"><br>当输入1’ and ‘1’=’1 ，语句为真，程序执行 ；1’ and ‘1’=’2 ，语句为假，程序不执行；</p>
+<p>基于这些判断，就可以认为存在SQL注入<br>现在可以猜解select中的字段个数，利用“order by”语句 可以从1开始（注意空格）<br><img src="/images/20190715/img7.png" alt="imgage"><br>当数值到3时，网页报错 “Unknown column ‘3’ in ‘order clause’”<br>说明，查询的字段个数为2；</p>
+<p>然后我们可以利用联合查询语句，查询一些有用的信息<br><img src="/images/20190715/img8.png" alt="imgage"></p>
 
       
     </div>
