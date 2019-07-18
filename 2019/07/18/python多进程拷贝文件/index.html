@@ -101,13 +101,18 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Galiyy&#39;blog">
-<meta property="og:url" content="http://yoursite.com/tags/分享/index.html">
+  <meta name="description" content="Python多进程拷贝实现思路 创建可获取目标文件或文件夹中的所有文件夹和文件的列表的函数 创建拷贝文件的函数 主函数创建进程池和消息队列">
+<meta name="keywords" content="-python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python多进程拷贝文件">
+<meta property="og:url" content="http://yoursite.com/2019/07/18/python多进程拷贝文件/index.html">
 <meta property="og:site_name" content="Galiyy&#39;blog">
+<meta property="og:description" content="Python多进程拷贝实现思路 创建可获取目标文件或文件夹中的所有文件夹和文件的列表的函数 创建拷贝文件的函数 主函数创建进程池和消息队列">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-18T10:56:55.034Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Galiyy&#39;blog">
+<meta name="twitter:title" content="python多进程拷贝文件">
+<meta name="twitter:description" content="Python多进程拷贝实现思路 创建可获取目标文件或文件夹中的所有文件夹和文件的列表的函数 创建拷贝文件的函数 主函数创建进程池和消息队列">
 
 
 
@@ -115,7 +120,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/tags/分享/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/18/python多进程拷贝文件/">
 
 
 
@@ -125,7 +130,7 @@
   };
 </script>
 
-  <title>标签: 分享 | Galiyy'blog</title>
+  <title>python多进程拷贝文件 | Galiyy'blog</title>
   
 
 
@@ -178,7 +183,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <a href="https://github.com/Galiyy" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
@@ -235,7 +240,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -337,80 +342,228 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>分享<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/18/python多进程拷贝文件/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Galiyy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Galiyy'blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/06/30/我的第一篇博客/" itemprop="url">
-            
-              <span itemprop="name">我的第一篇博客</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">python多进程拷贝文件
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-30T11:43:24+08:00" content="2019-06-30">
-          06-30
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-18 16:23:36 / 修改时间：18:56:55" itemprop="dateCreated datePublished" datetime="2019-07-18T16:23:36+08:00">2019-07-18</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python系统编程/" itemprop="url" rel="index"><span itemprop="name">python系统编程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Python多进程拷贝"><a href="#Python多进程拷贝" class="headerlink" title="Python多进程拷贝"></a>Python多进程拷贝</h1><h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><ol>
+<li>创建可获取目标文件或文件夹中的所有文件夹和文件的列表的函数</li>
+<li>创建拷贝文件的函数</li>
+<li>主函数创建进程池和消息队列</li>
+</ol>
+<a id="more"></a>
+
+<h3 id="获取文件夹和文件列表"><a href="#获取文件夹和文件列表" class="headerlink" title="获取文件夹和文件列表"></a>获取文件夹和文件列表</h3><p>先判断路径是文件还是文件夹，是文件直接添加至文件列表；文件夹的话，添加至文件夹列表，利用os.listdir()函数列出当前文件夹内的所有文件，循环遍历，拼接源地址，然后作为参数递归循环；</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_file_list</span><span class="params">(source_path)</span>:</span></span><br><span class="line">	<span class="string">"""</span></span><br><span class="line"><span class="string">	遍历该文件夹中的所有文件和文件夹</span></span><br><span class="line"><span class="string">	获取源文件夹中的文件夹、文件列表</span></span><br><span class="line"><span class="string">	"""</span></span><br><span class="line">	<span class="keyword">if</span> os.path.isdir(source_path):</span><br><span class="line">		S_Dir_List.append(source_path)</span><br><span class="line">		<span class="keyword">for</span> temp <span class="keyword">in</span> os.listdir(source_path):</span><br><span class="line">			<span class="comment"># 拼接源地址+文件名，变成新地址，再进行递归</span></span><br><span class="line">			new_source_path = os.path.join(source_path, temp)</span><br><span class="line">			get_file_list(new_source_path)</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		S_File_List.append(source_path)</span><br></pre></td></tr></table></figure>
+
+<h3 id="拷贝文件"><a href="#拷贝文件" class="headerlink" title="拷贝文件"></a>拷贝文件</h3><p>传入的参数</p>
+<ul>
+<li>queue： 消息队列，用于主函数计数</li>
+<li>source_file： 源文件路径</li>
+<li>dest_file： 目标文件的路径</li>
+</ul>
+<p>循环读取写入，是防止文件过大，读写卡死</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">copy_file</span><span class="params">(queue, source_file, dest_file)</span>:</span></span><br><span class="line">	<span class="string">"""</span></span><br><span class="line"><span class="string">	复制文件从源文件</span></span><br><span class="line"><span class="string">	"""</span></span><br><span class="line">	<span class="keyword">try</span>:</span><br><span class="line">		fr = open(source_file,<span class="string">"rb"</span>)</span><br><span class="line">		fw = open(dest_file,<span class="string">"wb"</span>)</span><br><span class="line">	<span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">		print(<span class="string">"error:"</span> + str(e))</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">			content = fr.read(<span class="number">4096</span>)</span><br><span class="line">			<span class="keyword">if</span> <span class="keyword">not</span> content:</span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">			fw.write(content)</span><br><span class="line">		fr.close()</span><br><span class="line">		fw.close()</span><br><span class="line">	<span class="comment"># 将文件名传入队列消息，代表复制完成</span></span><br><span class="line">	queue.put(source_file)</span><br></pre></td></tr></table></figure>
+
+<h3 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h3><p>如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Manager, Pool</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># 源文件列表 文件夹列表</span></span><br><span class="line">S_File_List = []</span><br><span class="line">S_Dir_List = []</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_file_list</span><span class="params">(source_path)</span>:</span></span><br><span class="line">	<span class="string">"""</span></span><br><span class="line"><span class="string">	遍历该文件夹中的所有文件和文件夹</span></span><br><span class="line"><span class="string">	获取源文件夹中的文件夹、文件列表</span></span><br><span class="line"><span class="string">	"""</span></span><br><span class="line">	<span class="keyword">if</span> os.path.isdir(source_path):</span><br><span class="line">		S_Dir_List.append(source_path)</span><br><span class="line">		<span class="keyword">for</span> temp <span class="keyword">in</span> os.listdir(source_path):</span><br><span class="line">			<span class="comment"># 拼接源地址+文件名，变成新地址，再进行递归</span></span><br><span class="line">			new_source_path = os.path.join(source_path, temp)</span><br><span class="line">			get_file_list(new_source_path)</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		S_File_List.append(source_path)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">copy_file</span><span class="params">(queue, source_file, dest_file)</span>:</span></span><br><span class="line">	<span class="string">"""</span></span><br><span class="line"><span class="string">	复制文件从源文件</span></span><br><span class="line"><span class="string">	"""</span></span><br><span class="line">	<span class="keyword">try</span>:</span><br><span class="line">		fr = open(source_file,<span class="string">"rb"</span>)</span><br><span class="line">		fw = open(dest_file,<span class="string">"wb"</span>)</span><br><span class="line">	<span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">		print(<span class="string">"error:"</span> + str(e))</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">			content = fr.read(<span class="number">4096</span>)</span><br><span class="line">			<span class="keyword">if</span> <span class="keyword">not</span> content:</span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">			fw.write(content)</span><br><span class="line">		fr.close()</span><br><span class="line">		fw.close()</span><br><span class="line">	<span class="comment"># 将文件名传入队列消息，代表复制完成</span></span><br><span class="line">	queue.put(source_file)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="comment"># 获取源文件夹中的所有文件和文件夹</span></span><br><span class="line">	source_path = input(<span class="string">"请输入要拷贝的源文件路径："</span>)</span><br><span class="line">	get_file_list(source_path)</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 创建目标文件夹</span></span><br><span class="line">	dest_path = source_path + <span class="string">"-[复件]"</span></span><br><span class="line">	<span class="keyword">for</span> sour_dir <span class="keyword">in</span> S_Dir_List:</span><br><span class="line">		<span class="comment"># 替换文件的路径</span></span><br><span class="line">		dest_dir = sour_dir.replace(source_path, dest_path) </span><br><span class="line"></span><br><span class="line">		<span class="keyword">try</span>:</span><br><span class="line">			os.mkdir(dest_dir)</span><br><span class="line">		<span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">			print(<span class="string">"error"</span> + str(e))</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 创建进程池</span></span><br><span class="line">	pool = Pool(<span class="number">5</span>)</span><br><span class="line">	queue = Manager().Queue()  <span class="comment"># 创建队列消息用来计数</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> sour_file <span class="keyword">in</span> S_File_List:</span><br><span class="line">		<span class="comment"># 替换文件的路径</span></span><br><span class="line">		dest_file = sour_file.replace(source_path,dest_path)</span><br><span class="line">		<span class="comment"># print(dest_file)</span></span><br><span class="line">		<span class="comment"># 往进程池添加任务</span></span><br><span class="line">		pool.apply_async(copy_file, args=(queue, sour_file, dest_file))</span><br><span class="line">	pool.close()  <span class="comment"># 关闭进程池</span></span><br><span class="line">	pool.join()   <span class="comment"># 等待子进程结束</span></span><br><span class="line"></span><br><span class="line">	<span class="comment"># 显示复制文件的进度</span></span><br><span class="line">	filesNums = len(S_File_List)</span><br><span class="line">	COUNT = <span class="number">0</span></span><br><span class="line">	<span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">		queue.get()</span><br><span class="line">		COUNT += <span class="number">1</span></span><br><span class="line">		Rate = COUNT/filesNums</span><br><span class="line">		print(<span class="string">"\r当前进度： %.2f%%"</span>%(Rate*<span class="number">100</span>), end=<span class="string">''</span>)</span><br><span class="line">		<span class="keyword">if</span> Rate &gt;= <span class="number">1</span>:</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">	print(<span class="string">"\n...Done"</span>)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	main()</span><br></pre></td></tr></table></figure>
 
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># -python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/16/常见的DOS命令/" rel="next" title="常见的DOS命令">
+                <i class="fa fa-chevron-left"></i> 常见的DOS命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -430,8 +583,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -561,6 +723,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python多进程拷贝"><span class="nav-number">1.</span> <span class="nav-text">Python多进程拷贝</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实现思路"><span class="nav-number">1.1.</span> <span class="nav-text">实现思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取文件夹和文件列表"><span class="nav-number">1.1.1.</span> <span class="nav-text">获取文件夹和文件列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拷贝文件"><span class="nav-number">1.1.2.</span> <span class="nav-text">拷贝文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源代码"><span class="nav-number">1.1.3.</span> <span class="nav-text">源代码</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -741,6 +920,10 @@ setInterval("createtime()",250);
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
 
   
 
@@ -756,6 +939,8 @@ setInterval("createtime()",250);
 
   
 
+
+  
 
 
   
