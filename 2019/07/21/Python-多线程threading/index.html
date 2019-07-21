@@ -101,13 +101,18 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Galiyy&#39;blog">
-<meta property="og:url" content="http://yoursite.com/tags/SQL注入/index.html">
+  <meta name="description" content="Python多线程&amp;emsp;&amp;emsp;线程（thread）是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务。  进程是资源分配的最小单位，线程是CPU调度的最小单位，每一个进程中至少有一个线程。">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python-多线程threading">
+<meta property="og:url" content="http://yoursite.com/2019/07/21/Python-多线程threading/index.html">
 <meta property="og:site_name" content="Galiyy&#39;blog">
+<meta property="og:description" content="Python多线程&amp;emsp;&amp;emsp;线程（thread）是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务。  进程是资源分配的最小单位，线程是CPU调度的最小单位，每一个进程中至少有一个线程。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-20T17:45:00.518Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Galiyy&#39;blog">
+<meta name="twitter:title" content="Python-多线程threading">
+<meta name="twitter:description" content="Python多线程&amp;emsp;&amp;emsp;线程（thread）是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务。  进程是资源分配的最小单位，线程是CPU调度的最小单位，每一个进程中至少有一个线程。">
 
 
 
@@ -115,7 +120,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/tags/SQL注入/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/21/Python-多线程threading/">
 
 
 
@@ -125,7 +130,7 @@
   };
 </script>
 
-  <title>标签: SQL注入 | Galiyy'blog</title>
+  <title>Python-多线程threading | Galiyy'blog</title>
   
 
 
@@ -178,7 +183,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <a href="https://github.com/Galiyy" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
@@ -235,7 +240,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -337,106 +342,265 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>SQL注入<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/21/Python-多线程threading/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Galiyy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Galiyy'blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/07/19/手动挖掘漏洞-SQL注入（二）/" itemprop="url">
-            
-              <span itemprop="name">手动挖掘漏洞-SQL注入（二）</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Python-多线程threading
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-19T11:14:04+08:00" content="2019-07-19">
-          07-19
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
 
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-21 00:14:41 / 修改时间：01:45:00" itemprop="dateCreated datePublished" datetime="2019-07-21T00:14:41+08:00">2019-07-21</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python系统编程/" itemprop="url" rel="index"><span itemprop="name">python系统编程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h1 id="Python多线程"><a href="#Python多线程" class="headerlink" title="Python多线程"></a>Python多线程</h1><p>&emsp;&emsp;线程（thread）是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务。</p>
+<blockquote>
+<p>进程是资源分配的最小单位，线程是CPU调度的最小单位，每一个进程中至少有一个线程。</p>
+</blockquote>
+<a id="more"></a>
 
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/07/15/手动挖掘漏洞-SQL注入（一）/" itemprop="url">
-            
-              <span itemprop="name">手动挖掘漏洞---SQL注入（一）</span>
-            
-          </a>
-        
-      </h2>
+<h2 id="线程的特点"><a href="#线程的特点" class="headerlink" title="线程的特点"></a>线程的特点</h2><p>&emsp;&emsp;在多线程OS中，通常是在一个进程中包括多个线程，每个线程都是作为利用CPU的基本单位，是花费最小开销的实体。</p>
+<ul>
+<li><strong><em>轻型实体；</em></strong><br>&emsp;&emsp;线程中的实体基本上不拥有系统资源，只是有一点必不可少的、能保证独立运行的资源。<br>&emsp;&emsp;线程的实体包括程序、数据和TCB。线程是动态概念，它的动态特性由线程控制块TCB（Thread Control Block）描述。</li>
+<li><strong><em>独立调度和分派的基本单位；</em></strong><br>&emsp;&emsp;在多线程OS中，线程是能独立运行的基本单位，因而也是独立调度和分派的基本单位。由于线程很“轻”，故线程的切换非常迅速且开销小（在同一进程中的）。</li>
+<li><strong><em>可并发执行；</em></strong><br>&emsp;&emsp;在一个进程中的多个线程之间，可以并发执行，甚至允许在一个进程中所有线程都能并发执行；同样，不同进程中的线程也能并发执行，充分利用和发挥了处理机与外围设备并行工作的能力。</li>
+<li><strong><em>共享进程资源；</em></strong><br>&emsp;&emsp;在同一进程中的各个线程，都可以共享该进程所拥有的资源，这首先表现在：所有线程都具有相同的地址空间（进程的地址空间），这意味着，线程可以访问该地址空间的每一个虚地址；此外，还可以访问进程所拥有的已打开文件、定时器、信号量机构等。由于同一个进程内的线程共享内存和文件，所以线程之间互相通信不必调用内核。</li>
+</ul>
+<h2 id="创建线程"><a href="#创建线程" class="headerlink" title="创建线程"></a>创建线程</h2><p>python的thread模块是比较底层的模块，python的threading模块是对thread做了一些包装的，可以更加方便的被使用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">threading</span>.<span class="title">Thread</span><span class="params">(group=None, target=None, name=None, args=<span class="params">()</span>, kwargs=&#123;&#125;, *, daemon=None)</span></span></span><br></pre></td></tr></table></figure>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-15T20:50:09+08:00" content="2019-07-15">
-          07-15
-        </time>
-      </div>
+<p>参数：</p>
+<ul>
+<li>group：目前此参数为None，在实现ThreadGroup类时为将来的扩展保留。</li>
+<li>target：target接收的是一个函数的地址，由run()方法调用执行函数中的内容。默认为无，表示未调用任何内容。</li>
+<li>name ：线程名，可自行定义。</li>
+<li>args：target接收的是函数名，此函数的位置参数以元组的形式存放在args中，用于执行函数时调用。</li>
+<li>kwargs ：target接收的是函数名，此函数的关键字参数以字典的形式存放在kwargs中，用于执行函数时调用。</li>
+<li>daemon：如果为True表示该线程为守护线程。<br>方法：</li>
+</ul>
+<ul>
+<li><strong>threading模块的方法</strong>：<ul>
+<li>threading.currentThread(): 返回当前的线程变量。</li>
+<li>threading.enumerate(): 返回一个包含正在运行的线程的list。正在运行指线程启动后、结束前，不包括启动前和终止后的线程。</li>
+<li>threading.activeCount(): 返回正在运行的线程数量，与len(threading.enumerate())有相同的结果。</li>
+</ul>
+</li>
+<li><strong>Thread类方法</strong>：<ul>
+<li>start()：开启线程，一个Thread对象只能调用一次start()方法，如果在同一线程对象上多次调用此方法，则会引发RuntimeError。</li>
+<li>run()：执行start()方法会调用run()，该方将创建Thread对象时传递给target的函数名，和传递给args、kwargs的参数组合成一个完整的函数，并执行该函数。run()方法一般在自定义Thead类时会用到。</li>
+<li>join(timeout=None)：join会阻塞、等待线程，timeout单位为秒，因为join（）总是返回none，所以在设置timeout调用join（timeout）之后，需要使用isalive（）判断线程是否执行完成，如果isalive为True表示线程在规定时间内没有执行完，线程超时。如果join(timeout=None)则会等待线程执行完毕后才会执行join（）后面的代码，一般用于等待线程结束。</li>
+<li>name：获取线程名。</li>
+<li>getName()：获取线程名。</li>
+<li>setName(name)：设置线程名。</li>
+<li>ident：“线程标识符”，如果线程尚未启动，则为None。如果线程启动是一个非零整数。</li>
+<li>is_alive()：判断线程的存活状态，在run（）方法开始之前，直到run（）方法终止之后。如果线程存活返回True，否则返回False。</li>
+<li>daemon：如果thread.daemon=True表示该线程为守护线程，必须在调用Start（）之前设置此项，否则将引发RuntimeError。默认为False</li>
+<li>isDaemon()：判断一个线程是否是守护线程。</li>
+<li>setDaemon(daemonic)：设置线程为守护线程。</li>
+</ul>
+</li>
+</ul>
+<h3 id="thread创建线程"><a href="#thread创建线程" class="headerlink" title="thread创建线程"></a>thread创建线程</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(num)</span>:</span></span><br><span class="line">	print(<span class="string">"线程--- %d"</span> % num)</span><br><span class="line">	time.sleep(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">		t = threading.Thread(target=test,args=(i,))</span><br><span class="line">		t.start()</span><br></pre></td></tr></table></figure>
 
-    </header>
-  </article>
+<p>执行结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">线程--- <span class="number">0</span></span><br><span class="line">线程--- <span class="number">1</span></span><br><span class="line">线程--- <span class="number">2</span></span><br><span class="line">线程--- <span class="number">3</span></span><br><span class="line">线程--- <span class="number">4</span></span><br></pre></td></tr></table></figure>
 
+<h3 id="thread子类创建线程"><a href="#thread子类创建线程" class="headerlink" title="thread子类创建线程"></a>thread子类创建线程</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">	<span class="comment"># 重写run方法</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">			time.sleep(<span class="number">1</span>)</span><br><span class="line">			print(self.name + <span class="string">"\t"</span> + str(i))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>): <span class="comment"># 创建5个线程</span></span><br><span class="line">		t = MyThread()</span><br><span class="line">		t.start()</span><br></pre></td></tr></table></figure>
+
+<p>执行结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Thread<span class="number">-1</span>	<span class="number">0</span></span><br><span class="line">Thread<span class="number">-2</span>	<span class="number">0</span></span><br><span class="line">Thread<span class="number">-3</span>	<span class="number">0</span></span><br><span class="line">Thread<span class="number">-5</span>	<span class="number">0</span></span><br><span class="line">Thread<span class="number">-4</span>	<span class="number">0</span></span><br><span class="line">Thread<span class="number">-2</span>	<span class="number">1</span></span><br><span class="line">Thread<span class="number">-1</span>	<span class="number">1</span></span><br><span class="line">Thread<span class="number">-3</span>	<span class="number">1</span></span><br><span class="line">Thread<span class="number">-5</span>	<span class="number">1</span></span><br><span class="line">Thread<span class="number">-4</span>	<span class="number">1</span></span><br><span class="line">Thread<span class="number">-2</span>	<span class="number">2</span></span><br><span class="line">Thread<span class="number">-1</span>	<span class="number">2</span></span><br><span class="line">Thread<span class="number">-4</span>	<span class="number">2</span></span><br><span class="line">Thread<span class="number">-3</span>	<span class="number">2</span></span><br><span class="line">Thread<span class="number">-5</span>	<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><a href="https://baike.baidu.com/item/%E7%BA%BF%E7%A8%8B/103101?fr=aladdin" title="线程" target="_blank" rel="noopener">百度百科</a><br><a href="https://www.cnblogs.com/caesar-id/p/10758189.html" title="python线程" target="_blank" rel="noopener">参考博客</a></p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/19/手动挖掘漏洞-SQL注入（二）/" rel="next" title="手动挖掘漏洞-SQL注入（二）">
+                <i class="fa fa-chevron-left"></i> 手动挖掘漏洞-SQL注入（二）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -456,8 +620,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -585,6 +758,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python多线程"><span class="nav-number">1.</span> <span class="nav-text">Python多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程的特点"><span class="nav-number">1.1.</span> <span class="nav-text">线程的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建线程"><span class="nav-number">1.2.</span> <span class="nav-text">创建线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#thread创建线程"><span class="nav-number">1.2.1.</span> <span class="nav-text">thread创建线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#thread子类创建线程"><span class="nav-number">1.2.2.</span> <span class="nav-text">thread子类创建线程</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -765,6 +955,10 @@ setInterval("createtime()",250);
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
 
   
 
@@ -780,6 +974,8 @@ setInterval("createtime()",250);
 
   
 
+
+  
 
 
   
