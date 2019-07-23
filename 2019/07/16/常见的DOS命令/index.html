@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="Galiyy&#39;blog">
 <meta property="og:description" content="介绍常用的dos命令">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-16T05:26:35.439Z">
+<meta property="og:updated_time" content="2019-07-21T05:12:56.030Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常见的DOS命令">
 <meta name="twitter:description" content="介绍常用的dos命令">
@@ -405,13 +405,23 @@
                 
               
 
-              <time title="创建时间：2019-07-16 11:10:39 / 修改时间：13:26:35" itemprop="dateCreated datePublished" datetime="2019-07-16T11:10:39+08:00">2019-07-16</time>
+              <time title="创建时间：2019-07-16 11:10:39" itemprop="dateCreated datePublished" datetime="2019-07-16T11:10:39+08:00">2019-07-16</time>
             </span>
           
 
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-21 13:12:56" itemprop="dateModified" datetime="2019-07-21T13:12:56+08:00">2019-07-21</time>
+              </span>
             
           
 
@@ -518,7 +528,71 @@
 
 </li>
 </ul>
-<h3 id="net-use"><a href="#net-use" class="headerlink" title="net use"></a>net use</h3>
+<h3 id="net-use"><a href="#net-use" class="headerlink" title="net use"></a>net use</h3><blockquote>
+<p>作用：用于查看连接的计算机，断开计算机与共享资源的连接，或者显示计算机的连接信息</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">NET USE</span><br><span class="line">[devicename | *] [\\computername\sharename[\volume] [password | *]]</span><br><span class="line">        [/USER:[domainname\]username]</span><br><span class="line">        [/USER:[dotted domain name\]username]</span><br><span class="line">        [/USER:[username@dotted domain name]</span><br><span class="line">        [/SMARTCARD]</span><br><span class="line">        [/SAVECRED]</span><br><span class="line">        [/REQUIREINTEGRITY]</span><br><span class="line">        [/REQUIREPRIVACY]</span><br><span class="line">        [[/DELETE] | [/PERSISTENT:&#123;YES | NO&#125;]]</span><br></pre></td></tr></table></figure>
+
+<p>参数：</p>
+<ul>
+<li>输入不带参数 “net use” 命令，可列出网络连接</li>
+<li>“devicename” 用于指定要连接的资源名称或要断开的设备名称</li>
+<li>“\\computername\sharename” 表示服务器及共享资源的名称</li>
+<li>“password” 表示访问共享资源的密码</li>
+<li>“*” 提示输入密码</li>
+<li>“/user” 用于指定进行连接的另外一个用户</li>
+<li>“domainname” 用于指定另一个域</li>
+<li>“username” 用于指定登陆的用户名</li>
+<li>“/home” 用于将用户连接到其宿主主目录</li>
+<li>“/delete” 用于取消指定的网络连接</li>
+<li>“/persistent” 用于控制永久网络连接的使用</li>
+</ul>
+<h3 id="net-time"><a href="#net-time" class="headerlink" title="net time"></a>net time</h3><blockquote>
+<p>作用：用于查看系统时间，或用于同步其他计算机域的时钟</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">NET TIME</span><br><span class="line">[\\computername | /DOMAIN[:domainname] | /RTSDOMAIN[:domainname]] [/SET]</span><br></pre></td></tr></table></figure>
+
+<p>参数：</p>
+<ul>
+<li>“computename” 表示要检查或同步的服务器名</li>
+<li>“/DOMAIN[:domainname]” 用于指定要与其时间同步的域</li>
+<li>“/set” 用于使本计算机时钟与指定计算机或域的时钟同步</li>
+</ul>
+<h3 id="net-statisics"><a href="#net-statisics" class="headerlink" title="net statisics"></a>net statisics</h3><blockquote>
+<p>作用：用于显示本地工作站的统计记录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">NET STATISTICS</span><br><span class="line">[WORKSTATION]</span><br></pre></td></tr></table></figure>
+
+<h3 id="net-share"><a href="#net-share" class="headerlink" title="net share"></a>net share</h3><blockquote>
+<p>作用：用于创建、删除或显示共享资源</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">NET SHARE</span><br><span class="line">sharename</span><br><span class="line">          sharename=drive:path [/GRANT:user,[READ | CHANGE | FULL]]</span><br><span class="line">                               [/USERS:number | /UNLIMITED]</span><br><span class="line">                               [/REMARK:&quot;text&quot;]</span><br><span class="line">                               [/CACHE:Manual | Documents| Programs | BranchCache | None]</span><br><span class="line">          sharename [/USERS:number | /UNLIMITED]</span><br><span class="line">                    [/REMARK:&quot;text&quot;]</span><br><span class="line">                    [/CACHE:Manual | Documents | Programs | BranchCache | None]</span><br><span class="line">          &#123;sharename | devicename | drive:path&#125; /DELETE</span><br><span class="line">          sharename \\computername /DELETE</span><br></pre></td></tr></table></figure>
+
+<p>参数：</p>
+<ul>
+<li>不带参数 “net share” 表示共享资源的绝对路径</li>
+<li>“sharename” 表示共享资源的网络名称</li>
+<li>“drive:path” 用于指定共享目录的绝对路径</li>
+<li>“/users:number” 用于设置可同时访问共享资源的最大用户数</li>
+<li>“unlimited” 表示不限制同时访问共享资源的最大用户数</li>
+<li>“/remark:”text”” 用于添加关于资源的注释，注释文字用引号包裹### net share<blockquote>
+<p>作用：用于创建、删除或显示共享资源</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="net-session"><a href="#net-session" class="headerlink" title="net session"></a>net session</h3><blockquote>
+<p>作用：用于列出或断开本地计算机和与之连接的客户端的会话，也可以写成“net sessions”或“net sess”</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">命令格式：</span><br><span class="line">NET SESSION</span><br><span class="line">[\\computername] [/DELETE] [/LIST]</span><br></pre></td></tr></table></figure>
+
+<p>参数：</p>
+<ul>
+<li>不带参数 “net session” 显示所有与本地计算机的会话信息</li>
+<li>“computername” 用于标识要列出或断开会话的计算机</li>
+<li>“/delete” 用于结束与“computername”计算机的会话，并关闭本次会话期间计算机的所有进程</li>
+</ul>
+<h2 id="Ipconfig"><a href="#Ipconfig" class="headerlink" title="Ipconfig"></a>Ipconfig</h2><p>“ipconfig”和“ipconfig /all” 用于查看网络的配置情况。</p>
+
       
     </div>
 
@@ -642,7 +716,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -667,7 +741,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -700,7 +776,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -764,7 +842,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Net命令"><span class="nav-number">1.</span> <span class="nav-text">1.Net命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#net-view"><span class="nav-number">1.1.</span> <span class="nav-text">net view</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#net-user"><span class="nav-number">1.2.</span> <span class="nav-text">net user</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#net-use"><span class="nav-number">1.3.</span> <span class="nav-text">net use</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Net命令"><span class="nav-number">1.</span> <span class="nav-text">1.Net命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#net-view"><span class="nav-number">1.1.</span> <span class="nav-text">net view</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#net-user"><span class="nav-number">1.2.</span> <span class="nav-text">net user</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#net-use"><span class="nav-number">1.3.</span> <span class="nav-text">net use</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#net-time"><span class="nav-number">1.4.</span> <span class="nav-text">net time</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#net-statisics"><span class="nav-number">1.5.</span> <span class="nav-text">net statisics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#net-share"><span class="nav-number">1.6.</span> <span class="nav-text">net share</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#net-session"><span class="nav-number">1.7.</span> <span class="nav-text">net session</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ipconfig"><span class="nav-number">2.</span> <span class="nav-text">Ipconfig</span></a></li></ol></div>
             
 
           </div>
