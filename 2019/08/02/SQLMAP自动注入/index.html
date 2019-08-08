@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/bear0.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/bear0_32x32.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/bear0_16x16.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="sqlmap是一款非常强大的开源sql自动化注入工具，可以用来检测和利用sql注入漏洞【动态页面中get/post参数、cookie、HTTP头】。它由Python语言开发而成，因此运行需要安装python环境。但在kali中已经集成。其功能完善，有强大的引擎，适用几乎所有数据库，，可自动进行数据榨取，也可对检测与利用的自动化处理（数据库指纹、访问底层文件系统、执行操作系统命令），还可以做XSS">
+<meta name="keywords" content="CTF,SQL注入,Web安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQLMAP自动注入">
+<meta property="og:url" content="http://yoursite.com/2019/08/02/SQLMAP自动注入/index.html">
+<meta property="og:site_name" content="Galiyy&#39;blog">
+<meta property="og:description" content="sqlmap是一款非常强大的开源sql自动化注入工具，可以用来检测和利用sql注入漏洞【动态页面中get/post参数、cookie、HTTP头】。它由Python语言开发而成，因此运行需要安装python环境。但在kali中已经集成。其功能完善，有强大的引擎，适用几乎所有数据库，，可自动进行数据榨取，也可对检测与利用的自动化处理（数据库指纹、访问底层文件系统、执行操作系统命令），还可以做XSS">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-08T08:20:33.695Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQLMAP自动注入">
+<meta name="twitter:description" content="sqlmap是一款非常强大的开源sql自动化注入工具，可以用来检测和利用sql注入漏洞【动态页面中get/post参数、cookie、HTTP头】。它由Python语言开发而成，因此运行需要安装python环境。但在kali中已经集成。其功能完善，有强大的引擎，适用几乎所有数据库，，可自动进行数据榨取，也可对检测与利用的自动化处理（数据库指纹、访问底层文件系统、执行操作系统命令），还可以做XSS">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/08/02/SQLMAP自动注入/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>SQLMAP自动注入 | Galiyy'blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  
+
+  
+        <script type="text/javascript" src="/js/src/clicklove.js"></script>
+  
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/Galiyy" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Galiyy'blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/02/SQLMAP自动注入/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Galiyy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Galiyy'blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SQLMAP自动注入
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-02 17:16:54" itemprop="dateCreated datePublished" datetime="2019-08-02T17:16:54+08:00">2019-08-02</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-08 16:20:33" itemprop="dateModified" datetime="2019-08-08T16:20:33+08:00">2019-08-08</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SQL注入/" itemprop="url" rel="index"><span itemprop="name">SQL注入</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p><strong>sqlmap</strong>是一款非常强大的开源sql自动化注入工具，可以用来检测和利用sql注入漏洞【动态页面中get/post参数、cookie、HTTP头】。它由Python语言开发而成，因此运行需要安装python环境。但在kali中已经集成。其功能完善，有强大的引擎，适用几乎所有数据库，，可自动进行数据榨取，也可对检测与利用的自动化处理（数据库指纹、访问底层文件系统、执行操作系统命令），还可以做XSS漏洞检测。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="五种漏洞检测技术"><a href="#五种漏洞检测技术" class="headerlink" title="五种漏洞检测技术"></a>五种漏洞检测技术</h2><ul>
+<li>基于布尔的盲注检测</li>
+<li>基于时间的盲注检测<ul>
+<li>‘ and (select * from (select(sleep(20)))a)– </li>
+</ul>
+</li>
+<li>基于错误的检测</li>
+<li>基于UNION联合查询的检测<ul>
+<li>适用于通过循环直接输出联合查询结果，否则只显示第一项结果</li>
+</ul>
+</li>
+<li>基于堆叠的检测<ul>
+<li>；堆叠多个查询语句</li>
+<li>适用于非select的数据修改、删除操作</li>
+</ul>
+</li>
+</ul>
+<h2 id="支持的数据库"><a href="#支持的数据库" class="headerlink" title="支持的数据库"></a>支持的数据库</h2><ul>
+<li>MySQL, Oracle, PostgreSQL, Microsoft SQL Server, Microsoft Access, IBM DB2, SQLite, Firebird, Sybase , SAP MaxDB</li>
+</ul>
+<h2 id="其他特性"><a href="#其他特性" class="headerlink" title="其他特性"></a>其他特性</h2><ul>
+<li>数据库直接连接 -d<ul>
+<li>不通过SQL注入，制定身份认证信息、IP、端口</li>
+</ul>
+</li>
+<li>与burpsuite、google结合使用，支持正则表达式限定测试目标</li>
+<li>Get、post、cookie、Referer、User-Agent（随机或指定）<ul>
+<li>Cookie过期后自动处理Set-Cookie头，更新cookie信息</li>
+</ul>
+</li>
+<li>限速：最大并发、延迟发送</li>
+<li>支持Basic，Digest，NTLM，CA身份认证</li>
+<li>数据库版本、用户、权限、hash枚举和字典破解、暴力破解表列名称</li>
+<li>文件上传下载、UDF\启动并执行存储过程、操作系统命令执行、访问windows注册表</li>
+<li>与W3af、metasploit集成结合使用，基于数据库服务进程提权和上传执行后门</li>
+</ul>
+<h2 id="SQLMAP安装"><a href="#SQLMAP安装" class="headerlink" title="SQLMAP安装"></a>SQLMAP安装</h2><h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sqlmap --update </span><br><span class="line"></span><br><span class="line">git clone https://github.com/sqlmapproject/sqlmap.git</span><br><span class="line"></span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
+
+<h2 id="参数详解"><a href="#参数详解" class="headerlink" title="参数详解"></a>参数详解</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br></pre></td><td class="code"><pre><span class="line">        ___</span><br><span class="line">       __H__</span><br><span class="line"> ___ ___[&quot;]_____ ___ ___  &#123;1.2.7.28#dev&#125;</span><br><span class="line">|_ -| . [(]     | .&apos;| . |</span><br><span class="line">|___|_  [&quot;]_|_|_|__,|  _|</span><br><span class="line">      |_|V          |_|   http://sqlmap.org</span><br><span class="line"></span><br><span class="line">Usage: sqlmap.py [options]</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">  -h, --help            Show basic help message and exit</span><br><span class="line">  -hh                   Show advanced help message and exit</span><br><span class="line">  --version             Show program&apos;s version number and exit</span><br><span class="line">  -v VERBOSE            Verbosity level: 0-6 (default 1) </span><br><span class="line"></span><br><span class="line">  Target:  // 目标</span><br><span class="line">    At least one of these options has to be provided to define the</span><br><span class="line">    target(s)</span><br><span class="line"></span><br><span class="line">    -d DIRECT           Connection string for direct database connection    // 连接数据库</span><br><span class="line">    -u URL, --url=URL   Target URL (e.g. &quot;http://www.site.com/vuln.php?id=1&quot;)  // 指定url</span><br><span class="line">    -l LOGFILE          Parse target(s) from Burp or WebScarab proxy log file   // 指定相关日志文件</span><br><span class="line">    -x SITEMAPURL       Parse target(s) from remote sitemap(.xml) file        // 指定站点体贴</span><br><span class="line">    -m BULKFILE         Scan multiple targets given in a textual file     // 指定保存多个url的文件</span><br><span class="line">    -r REQUESTFILE      Load HTTP request from a file              // 指定包含http头部的url的文件(可用于post方法)</span><br><span class="line">    -g GOOGLEDORK       Process Google dork results as target URLs</span><br><span class="line">    -c CONFIGFILE       Load options from a configuration INI file      // 将命令保存文件，然后指定执行</span><br><span class="line"></span><br><span class="line">  Request:  // 请求</span><br><span class="line">    These options can be used to specify how to connect to the target URL</span><br><span class="line"></span><br><span class="line">    --method=METHOD     Force usage of given HTTP method (e.g. PUT)</span><br><span class="line">    --data=DATA         Data string to be sent through POST    //指定传递参数（POST）</span><br><span class="line">    --param-del=PARA..  Character used for splitting parameter values  //变量分隔符</span><br><span class="line">    --cookie=COOKIE     HTTP Cookie header value</span><br><span class="line">    --cookie-del=COO..  Character used for splitting cookie values</span><br><span class="line">    --load-cookies=L..  File containing cookies in Netscape/wget format</span><br><span class="line">    --drop-set-cookie   Ignore Set-Cookie header from response   //忽略网页响应的新cookies</span><br><span class="line">    --user-agent=AGENT  HTTP User-Agent header value</span><br><span class="line">    --random-agent      Use randomly selected HTTP User-Agent header value    //随机User-Agent</span><br><span class="line">    --host=HOST         HTTP Host header value     //指定host名称</span><br><span class="line">    --referer=REFERER   HTTP Referer header value      //指定referer头</span><br><span class="line">    -H HEADER, --hea..  Extra header (e.g. &quot;X-Forwarded-For: 127.0.0.1&quot;)</span><br><span class="line">    --headers=HEADERS   Extra headers (e.g. &quot;Accept-Language: fr\nETag: 123&quot;) //指定请求头部信息（参数用\n分隔）</span><br><span class="line">    --auth-type=AUTH..  HTTP authentication type (Basic, Digest, NTLM or PKI)  //用于HTTP协议认证</span><br><span class="line">    --auth-cred=AUTH..  HTTP authentication credentials (name:password)</span><br><span class="line">    --auth-file=AUTH..  HTTP authentication PEM cert/private key file    // 用于客户端认证</span><br><span class="line">    --ignore-code=IG..  Ignore HTTP error code (e.g. 401)</span><br><span class="line">    --ignore-proxy      Ignore system default proxy settings</span><br><span class="line">    --ignore-redirects  Ignore redirection attempts</span><br><span class="line">    --ignore-timeouts   Ignore connection timeouts</span><br><span class="line">    --proxy=PROXY       Use a proxy to connect to the target URL       // 指定代理服务器</span><br><span class="line">    --proxy-cred=PRO..  Proxy authentication credentials (name:password)</span><br><span class="line">    --proxy-file=PRO..  Load proxy list from a file</span><br><span class="line">    --tor               Use Tor anonymity network</span><br><span class="line">    --tor-port=TORPORT  Set Tor proxy port other than default</span><br><span class="line">    --tor-type=TORTYPE  Set Tor proxy type (HTTP, SOCKS4 or SOCKS5 (default))</span><br><span class="line">    --check-tor         Check to see if Tor is used properly</span><br><span class="line">    --delay=DELAY       Delay in seconds between each HTTP request   //http(s)请求之间得延迟时间，单位秒</span><br><span class="line">    --timeout=TIMEOUT   Seconds to wait before timeout connection (default 30)    // 超时时间</span><br><span class="line">    --retries=RETRIES   Retries when the connection timeouts (default 3)       // 重试次数</span><br><span class="line">    --randomize=RPARAM  Randomly change value for given parameter(s)  //指定请求需要随机值的参数，如id</span><br><span class="line">    --safe-url=SAFEURL  URL address to visit frequently during testing</span><br><span class="line">    --safe-post=SAFE..  POST data to send to a safe URL</span><br><span class="line">    --safe-req=SAFER..  Load safe HTTP request from a file</span><br><span class="line">    --safe-freq=SAFE..  Test requests between two visits to a given safe URL</span><br><span class="line">    --skip-urlencode    Skip URL encoding of payload data         // 跳过url的编码</span><br><span class="line">    --csrf-token=CSR..  Parameter used to hold anti-CSRF token</span><br><span class="line">    --csrf-url=CSRFURL  URL address to visit to extract anti-CSRF token</span><br><span class="line">    --force-ssl         Force usage of SSL/HTTPS    // 使用https协议</span><br><span class="line">    --hpp               Use HTTP parameter pollution method    // 使用HTTP参数污染方法 ，绕过WAF/IPS/IDS的有效方法</span><br><span class="line">    --eval=EVALCODE     Evaluate provided Python code before the request (e.g.  // 利用代码修改url中的参数值</span><br><span class="line">                        &quot;import hashlib;id2=hashlib.md5(id).hexdigest()&quot;)</span><br><span class="line"></span><br><span class="line">  Optimization:    //优化性能</span><br><span class="line">    These options can be used to optimize the performance of sqlmap</span><br><span class="line"></span><br><span class="line">    -o                  Turn on all optimization switches      // 开启以下三个参数，除--threads</span><br><span class="line">    --predict-output    Predict common queries output // 根据返回值和和统计表内容，不断缩小检测范围，提高效率</span><br><span class="line">                                                                                 （与--thread参数不兼容）</span><br><span class="line">    --keep-alive        Use persistent HTTP(s) connections   //使用http(s)长连接,减小开销  与--proxy不兼容</span><br><span class="line">    --null-connection   Retrieve page length without actual HTTP response body //只获取返回页面的大小</span><br><span class="line">                                                         ，而非内容常用于盲注，与--text-only不兼容</span><br><span class="line"></span><br><span class="line">    --threads=THREADS   Max number of concurrent HTTP(s) requests (default 1)  // 并发线程数</span><br><span class="line"></span><br><span class="line">  Injection:  // 注入</span><br><span class="line">    These options can be used to specify which parameters to test for,</span><br><span class="line">    provide custom injection payloads and optional tampering scripts</span><br><span class="line"></span><br><span class="line">    -p TESTPARAMETER    Testable parameter(s)     // 指定扫描的参数</span><br><span class="line">    --skip=SKIP         Skip testing for given parameter(s)   // 跳过指定参数的扫描</span><br><span class="line">    --skip-static       Skip testing parameters that not appear to be dynamic</span><br><span class="line">    --param-exclude=..  Regexp to exclude parameters from testing (e.g. &quot;ses&quot;)</span><br><span class="line">    --dbms=DBMS         Force back-end DBMS to provided value   // 指定扫描目标扫描的数据库类型版本</span><br><span class="line">    --dbms-cred=DBMS..  DBMS authentication credentials (user:password)   // 指定数据库账号密码</span><br><span class="line">    --os=OS             Force back-end DBMS operating system to provided value  //指定扫描目标的操作系统</span><br><span class="line">    --invalid-bignum    Use big numbers for invalidating values   // 使用大的数字使参数失效，如id=99999999</span><br><span class="line">    --invalid-logical   Use logical operations for invalidating values  //使用逻辑操作使参数失效</span><br><span class="line">    --invalid-string    Use random strings for invalidating values    // 使用随机字符串使参数失效</span><br><span class="line">    --no-cast           Turn off payload casting mechanism       // 关闭有效载荷释放机制</span><br><span class="line">                                                   //  榨取数据时，sqlmap将所有结果转换为字符串，并用空格代替NULL结果  </span><br><span class="line">                                                   //  在老版本mysql数据库需要开启此开关 </span><br><span class="line">    --no-escape         Turn off string escaping mechanism     //  关闭字符串转义机制</span><br><span class="line">    --prefix=PREFIX     Injection payload prefix string           // 在payload前面加前缀</span><br><span class="line">    --suffix=SUFFIX     Injection payload suffix string           // 在payload前面加后缀</span><br><span class="line">    --tamper=TAMPER     Use given script(s) for tampering injection data   // 使用脚本注入，常用于绕过WAF，IDS</span><br><span class="line"></span><br><span class="line">  Detection:    // 检测</span><br><span class="line">    These options can be used to customize the detection phase</span><br><span class="line"></span><br><span class="line">    --level=LEVEL       Level of tests to perform (1-5, default 1)   // 检测级别 （/usr/share/sqlmap/xml/payloads）</span><br><span class="line">    --risk=RISK         Risk of tests to perform (1-3, default 1)    // 风险级别</span><br><span class="line">    --string=STRING     String to match when query is evaluated to True //查询计算为True时要匹配的字符串</span><br><span class="line">    --not-string=NOT..  String to match when query is evaluated to False  //查询计算为False时要匹配的字符串</span><br><span class="line">    --regexp=REGEXP     Regexp to match when query is evaluated to True   //当查询被评估为True时匹配的正则表达式</span><br><span class="line">    --code=CODE         HTTP code to match when query is evaluated to True  //查询评估为True时要匹配的HTTP代码</span><br><span class="line">    --text-only         Compare pages based only on the textual content    //仅根据文本内容比较页面</span><br><span class="line">    --titles            Compare pages based only on their titles        //仅根据标题比较页面</span><br><span class="line"></span><br><span class="line">  Techniques:   // 技术</span><br><span class="line">    These options can be used to tweak testing of specific SQL injection</span><br><span class="line">    techniques</span><br><span class="line"></span><br><span class="line">    --technique=TECH    SQL injection techniques to use (default &quot;BEUSTQ&quot;)  //指定扫描的技术（如报错、时间等）</span><br><span class="line">    --time-sec=TIMESEC  Seconds to delay the DBMS response (default 5)      //基于时间注入的延时</span><br><span class="line">    --union-cols=UCOLS  Range of columns to test for UNION query SQL injection  //联合查询的列数</span><br><span class="line">    --union-char=UCHAR  Character to use for bruteforcing number of columns  // 指定联合查询时的数值，默认NULL</span><br><span class="line">    --union-from=UFROM  Table to use in FROM part of UNION query SQL injection   </span><br><span class="line">    --dns-domain=DNS..  Domain name used for DNS exfiltration attack</span><br><span class="line">    --second-url=SEC..  Resulting page URL searched for second-order response  // 响应的结果在另一个url页面中</span><br><span class="line">    --second-req=SEC..  Load second-order HTTP request from file</span><br><span class="line"></span><br><span class="line">  Fingerprint:</span><br><span class="line">    -f, --fingerprint   Perform an extensive DBMS version fingerprint  \\ 查询数据库版本，操作系统，架构等</span><br><span class="line"></span><br><span class="line">  Enumeration:  // 枚举</span><br><span class="line">    These options can be used to enumerate the back-end database</span><br><span class="line">    management system information, structure and data contained in the</span><br><span class="line">    tables. Moreover you can run your own SQL statements</span><br><span class="line"></span><br><span class="line">    -a, --all           Retrieve everything   // 检索一切</span><br><span class="line">    -b, --banner        Retrieve DBMS banner   // 查询数据库的banner信息（数据库版本）</span><br><span class="line">    --current-user      Retrieve DBMS current user     //当前数据库用户</span><br><span class="line">    --current-db        Retrieve DBMS current database   // 当前使用的数据库</span><br><span class="line">    --hostname          Retrieve DBMS server hostname     // 查询主机名</span><br><span class="line">    --is-dba            Detect if the DBMS current user is DBA</span><br><span class="line">    --users             Enumerate DBMS users    // 查询数据库用户</span><br><span class="line">    --passwords         Enumerate DBMS users password hashes</span><br><span class="line">    --privileges        Enumerate DBMS users privileges // 枚举用户的权限信息（-U 指定用户 -CU 当前用户）</span><br><span class="line">    --roles             Enumerate DBMS users roles    </span><br><span class="line">    --dbs               Enumerate DBMS databases   // 枚举当前所有的数据库</span><br><span class="line">    --tables            Enumerate DBMS database tables</span><br><span class="line">    --columns           Enumerate DBMS database table columns</span><br><span class="line">    --schema            Enumerate DBMS schema       // 枚举元数据库中的信息</span><br><span class="line">    --count             Retrieve number of entries for table(s)</span><br><span class="line">    --dump              Dump DBMS database table entries     // 将枚举的信息存储下来</span><br><span class="line">    --dump-all          Dump all DBMS databases tables entries</span><br><span class="line">    --search            Search column(s), table(s) and/or database name(s)</span><br><span class="line">    --comments          Check for DBMS comments during enumeration</span><br><span class="line">    -D DB               DBMS database to enumerate</span><br><span class="line">    -T TBL              DBMS database table(s) to enumerate</span><br><span class="line">    -C COL              DBMS database table column(s) to enumerate</span><br><span class="line">    -X EXCLUDE          DBMS database identifier(s) to not enumerate // </span><br><span class="line">    -U USER             DBMS user to enumerate      // 指定用户</span><br><span class="line">    --exclude-sysdbs    Exclude DBMS system databases when enumerating tables</span><br><span class="line">    --pivot-column=P..  Pivot column name</span><br><span class="line">    --where=DUMPWHERE   Use WHERE condition while table dumping</span><br><span class="line">    --start=LIMITSTART  First dump table entry to retrieve    // 通过start和stop参数选择查询的数据量（行数）</span><br><span class="line">    --stop=LIMITSTOP    Last dump table entry to retrieve0</span><br><span class="line">    --first=FIRSTCHAR   First query output word character to retrieve</span><br><span class="line">    --last=LASTCHAR     Last query output word character to retrieve</span><br><span class="line">    --sql-query=QUERY   SQL statement to be executed</span><br><span class="line">    --sql-shell         Prompt for an interactive SQL shell</span><br><span class="line">    --sql-file=SQLFILE  Execute SQL statements from given file(s)</span><br><span class="line"></span><br><span class="line">  Brute force:  // 暴力破解</span><br><span class="line">    These options can be used to run brute force checks</span><br><span class="line"></span><br><span class="line">    --common-tables     Check existence of common tables   // 破解表名称</span><br><span class="line">    --common-columns    Check existence of common columns  // 破解列名称</span><br><span class="line"></span><br><span class="line">  User-defined function injection:  // 用户自定义函数注入</span><br><span class="line">    These options can be used to create custom user-defined functions</span><br><span class="line"></span><br><span class="line">    --udf-inject        Inject custom user-defined functions</span><br><span class="line">    --shared-lib=SHLIB  Local path of the shared library</span><br><span class="line"></span><br><span class="line">  File system access:</span><br><span class="line">    These options can be used to access the back-end database management</span><br><span class="line">    system underlying file system</span><br><span class="line"></span><br><span class="line">    --file-read=RFILE   Read a file from the back-end DBMS file system // 读取目标系统文件</span><br><span class="line">    --file-write=WFILE  Write a local file on the back-end DBMS file system  // 写文件</span><br><span class="line">    --file-dest=DFILE   Back-end DBMS absolute filepath to write to   // 上传文件存储的位置（目标地址）</span><br><span class="line"></span><br><span class="line">  Operating system access:    // 操作系统访问</span><br><span class="line">    These options can be used to access the back-end database management</span><br><span class="line">    system underlying operating system</span><br><span class="line"></span><br><span class="line">    --os-cmd=OSCMD      Execute an operating system command //执行cmd命令</span><br><span class="line">    --os-shell          Prompt for an interactive operating system shell //提示输入交互式操作系统shell</span><br><span class="line">    --os-pwn            Prompt for an OOB shell, Meterpreter or VNC</span><br><span class="line">    --os-smbrelay       One click prompt for an OOB shell, Meterpreter or VNC</span><br><span class="line">    --os-bof            Stored procedure buffer overflow exploitation</span><br><span class="line">    --priv-esc          Database process user privilege escalation</span><br><span class="line">    --msf-path=MSFPATH  Local path where Metasploit Framework is installed</span><br><span class="line">    --tmp-path=TMPPATH  Remote absolute path of temporary files directory</span><br><span class="line"></span><br><span class="line">  Windows registry access:   // windows注册表访问</span><br><span class="line">    These options can be used to access the back-end database management</span><br><span class="line">    system Windows registry</span><br><span class="line"></span><br><span class="line">    --reg-read          Read a Windows registry key value</span><br><span class="line">    --reg-add           Write a Windows registry key value data</span><br><span class="line">    --reg-del           Delete a Windows registry key value</span><br><span class="line">    --reg-key=REGKEY    Windows registry key</span><br><span class="line">    --reg-value=REGVAL  Windows registry key value</span><br><span class="line">    --reg-data=REGDATA  Windows registry key value data</span><br><span class="line">    --reg-type=REGTYPE  Windows registry key value type</span><br><span class="line"></span><br><span class="line">  General:</span><br><span class="line">    These options can be used to set some general working parameters</span><br><span class="line"></span><br><span class="line">    -s SESSIONFILE      Load session from a stored (.sqlite) file   // 指定会话文件存放位置</span><br><span class="line">    -t TRAFFICFILE      Log all HTTP traffic into a textual file  //  指定流量文件存放位置</span><br><span class="line">    --batch             Never ask for user input, use the default behavior   // 所有提示都用默认选项</span><br><span class="line">    --binary-fields=..  Result fields having binary values (e.g. &quot;digest&quot;)</span><br><span class="line">    --check-internet    Check Internet connection before assessing the target</span><br><span class="line">    --crawl=CRAWLDEPTH  Crawl the website starting from the target URL   // 爬取信息，指定爬取深度</span><br><span class="line">    --crawl-exclude=..  Regexp to exclude pages from crawling (e.g. &quot;logout&quot;)</span><br><span class="line">    --csv-del=CSVDEL    Delimiting character used in CSV output (default &quot;,&quot;)  //指定csv文件数据的分隔符</span><br><span class="line">    --charset=CHARSET   Blind SQL injection charset (e.g. &quot;0123456789abcdef&quot;)    // 强制字符编码</span><br><span class="line">    --dump-format=DU..  Format of dumped data (CSV (default), HTML or SQLITE)</span><br><span class="line">    --encoding=ENCOD..  Character encoding used for data retrieval (e.g. GBK)</span><br><span class="line">    --eta               Display for each output the estimated time of arrival</span><br><span class="line">    --flush-session     Flush session files for current target    // 清空会话数据</span><br><span class="line">    --forms             Parse and test forms on target URL</span><br><span class="line">    --fresh-queries     Ignore query results stored in session file  // 忽略session查询结果</span><br><span class="line">    --har=HARFILE       Log all HTTP traffic into a HAR file</span><br><span class="line">    --hex               Use hex conversion during data retrieval  以16进制进行数据传输</span><br><span class="line">    --output-dir=OUT..  Custom output directory path // 指定输出目录</span><br><span class="line">    --parse-errors      Parse and display DBMS error messages from responses  // 分析数据库内建报错信息</span><br><span class="line">    --save=SAVECONFIG   Save options to a configuration INI file         //  编辑配置文件</span><br><span class="line">    --scope=SCOPE       Regexp to filter targets from provided proxy log   //从日志文件通过正则表达式过滤目标</span><br><span class="line">    --test-filter=TE..  Select tests by payloads and/or titles (e.g. ROW)</span><br><span class="line">    --test-skip=TEST..  Skip tests by payloads and/or titles (e.g. BENCHMARK)</span><br><span class="line">    --update            Update sqlmap</span><br><span class="line"></span><br><span class="line">  Miscellaneous:   // 杂项</span><br><span class="line">    -z MNEMONICS        Use short mnemonics (e.g. &quot;flu,bat,ban,tec=EU&quot;)  //   参数助记符</span><br><span class="line">    --alert=ALERT       Run host OS command(s) when SQL injection is found</span><br><span class="line">    --answers=ANSWERS   Set question answers (e.g. &quot;quit=N,follow=N&quot;)</span><br><span class="line">    --beep              Beep on question and/or when SQL injection is found</span><br><span class="line">    --cleanup           Clean up the DBMS from sqlmap specific UDF and tables</span><br><span class="line">    --dependencies      Check for missing (non-core) sqlmap dependencies</span><br><span class="line">    --disable-coloring  Disable console output coloring</span><br><span class="line">    --gpage=GOOGLEPAGE  Use Google dork results from specified page number</span><br><span class="line">    --identify-waf      Make a thorough testing for a WAF/IPS/IDS protection   // waf/ips/ids的彻底检测</span><br><span class="line">    --list-tampers      Display list of available tamper scripts</span><br><span class="line">    --mobile            Imitate smartphone through HTTP User-Agent header    // 模拟成手机发送请求</span><br><span class="line">    --offline           Work in offline mode (only use session data)</span><br><span class="line">    --purge             Safely remove all content from sqlmap data directory //安全地从sqlmap数据目录中删除所有内容</span><br><span class="line">    --skip-waf          Skip heuristic detection of WAF/IPS/IDS protection</span><br><span class="line">    --smart             Conduct thorough tests only if positive heuristic(s)   // 只选择基于错误的检测结果</span><br><span class="line">    --sqlmap-shell      Prompt for an interactive sqlmap shell</span><br><span class="line">    --tmp-dir=TMPDIR    Local directory for storing temporary files</span><br><span class="line">    --web-root=WEBROOT  Web server document root directory (e.g. &quot;/var/www&quot;)</span><br><span class="line">    --wizard            Simple wizard interface for beginner users     // 注入向导</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/CTF/" rel="tag"># CTF</a>
+          
+            <a href="/tags/SQL注入/" rel="tag"># SQL注入</a>
+          
+            <a href="/tags/Web安全/" rel="tag"># Web安全</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/30/墨者-SQL手工注入漏洞测试-Access数据库/" rel="next" title="墨者-SQL手工注入漏洞测试(Access数据库)">
+                <i class="fa fa-chevron-left"></i> 墨者-SQL手工注入漏洞测试(Access数据库)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/07/CTF靶场训练-SSH私钥泄露/" rel="prev" title="CTF靶场练-SSH私钥泄露">
+                CTF靶场练-SSH私钥泄露 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/head.jpg" alt="Galiyy">
+            
+              <p class="site-author-name" itemprop="name">Galiyy</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/Galiyy" title="GitHub &rarr; https://github.com/Galiyy" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:2954602786@qq.com" title="E-Mail &rarr; mailto:2954602786@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#五种漏洞检测技术"><span class="nav-number">1.</span> <span class="nav-text">五种漏洞检测技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#支持的数据库"><span class="nav-number">2.</span> <span class="nav-text">支持的数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他特性"><span class="nav-number">3.</span> <span class="nav-text">其他特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQLMAP安装"><span class="nav-number">4.</span> <span class="nav-text">SQLMAP安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#更新"><span class="nav-number">4.1.</span> <span class="nav-text">更新</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数详解"><span class="nav-number">5.</span> <span class="nav-text">参数详解</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Galiyy</span>
+
+  
+
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.2</div>
+
+-->
+
+
+
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>  Sometimes your whole life boils down to one insame move.
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("06/30/2019 22:52:25");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">本站总访客数&nbsp;&nbsp;
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 人
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">本站总访问量&nbsp;&nbsp;
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+
+
