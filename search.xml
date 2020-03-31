@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Apache配置ssl证书-实现https访问]]></title>
+    <url>%2F2020%2F03%2F31%2FApache%E9%85%8D%E7%BD%AEssl%E8%AF%81%E4%B9%A6-%E5%AE%9E%E7%8E%B0https%E8%AE%BF%E9%97%AE%2F</url>
+    <content type="text"><![CDATA[HTTPS （全称：Hyper Text Transfer Protocol over SecureSocket Layer），是以安全为目标的 HTTP 通道，在HTTP的基础上通过传输加密和身份认证保证了传输过程的安全性 。HTTPS 在HTTP 的基础下加入SSL 层，HTTPS 的安全基础是 SSL，因此加密的详细内容就需要 SSL。 HTTPS 存在不同于 HTTP 的默认端口及一个加密/身份验证层（在 HTTP与 TCP 之间）。这个系统提供了身份验证与加密通讯方法。它被广泛用于万维网上安全敏感的通讯，例如交易支付等方面 。 安装Openssl生成ssl证书，需要用到openssl 12yum install openssl-devel -yyum update openssl 重新编译apache&emsp;&emsp;配置https，需要用到两个模块mod_socache_shmcb.so和mod_ssl.so，但由于我的apache是源码编译而成的，编译时没有生成mod_ssl.so模块，所以需要重新编译；其实mod_ssl.so可以用过动态方式编译安装，但是稍微有点复杂，所以建议备份网站，重新编译。模块路径（../apache/modules/） 12进入httpd源码目录 ./configure --prefix=/usr/local/apache --with-apr=/usr/local/apr --with-apr-util=/usr/local/apr-util --with-pcre=/usr/local/pcre --enable-ssl --enable-so 修改配置文件打开httpd.conf配置文件分别找到以下三条指令加载模块(删除#) 123LoadModule socache_shmcb_module modules/mod_socache_shmcb.soLoadModule ssl_module modules/mod_ssl.soInclude conf/extra/httpd-ssl.conf #引入外部的ssl配置文件 修改外部配置文件打开apache目录下conf/extra/httpd-ssl.conf文件 12345ServerName www.xxx.com:443 # 域名ServerAdmin xxx@xxx.com # 管理员邮箱SSLCertificateFile &quot;/usr/local/apache/conf/server.crt&quot; # 证书文件SSLCertificateKeyFile &quot;/usr/local/apache/conf/server.key&quot; #私钥文件 ssl证书1、创建密钥生成一个RSA私钥 1openssl genrsa -out server.key 2048 2、生成CSR（证书签名请求）说明：需要依次输入国家，地区，城市，组织，组织单位，Common Name和Email。其中Common Name，可以写自己的名字或者域名，如果要支持https，Common Name应该与域名保持一致，否则会引起浏览器警告。可以将证书发送给证书颁发机构（CA），CA验证过请求者的身份之后，会出具签名证书，需要花钱。另外，如果只是内部或者测试需求，也可以使用OpenSSL实现自签名。 1openssl req -new -key server.key -out server.csr 3、生成自签名证书内部或者测试使用，只要忽略证书提醒就可以了。 1openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt http重定向https配置httpd.conf加载 1LoadModule rewrite_module modules/mod_rewrite.so 在文本结尾添加 123RewriteEngine on RewriteCond %&#123;SERVER_PORT&#125; !^443$ RewriteRule ^.*$ https://%&#123;SERVER_NAME&#125;%&#123;REQUEST_URI&#125; [L,R] 配置成功后访问http时会自动跳转到https页面。]]></content>
+      <categories>
+        <category>Apache</category>
+      </categories>
+      <tags>
+        <tag>Apache</tag>
+        <tag>CentOS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[奇特的声明]]></title>
     <url>%2F2020%2F03%2F23%2F%E5%A5%87%E7%89%B9%E7%9A%84%E5%A3%B0%E6%98%8E%2F</url>
     <content type="text"><![CDATA[C允许您创建精心定制的数据形式。虽然我们坚持使用较简单的形式，但是我们觉得应该指出这些可能性。当进行一个声明可以添加一个或多个修饰符来修饰名称（或标识符）。 声明时可以使用的修饰符 修饰符 含义 * 表示一个指针 () 表示一个函数 [] 表示一个数组 C允许同时使用多于1个的修饰符，如下 12345678int board[8][8]; // int数组的数组int ** ptr; // 指向int的指针的指针int * risks[10]; // 具有10个元素的数组，每个元素时一个指向int的指针int (* rusks)[10]; // 一个指针，指向具有10个元素的数组int * oof[3][4]; // 一个3×4的数组，每个元素时一个指向int的指针int (* uuf)[3][4]; // 一个指针， 指向一个3×4的数组int (* uof[3])[4]; // 一个具有3个元素的数组，每个元素时一个指向 // 具有4个元素的int数组指针 修饰符的优先级：[]和()具有相同优先级且比&#10034;优先级高，顺序从左到右。圆括号可以使修饰符*具有更高优先级如： 1int (* uuf)[3][4]; // 一个指针， 指向一个3×4的数组 这些规则同时也产生下面的类型： 123char * fump(); // 返回char的指针的函数char (* frump)(); // 指向返回类型为char的函数的指针char (* flump[3])(); // 由3个指针组成的数组，每个指针指向返回类型为char的函数 使用typedef建立一系列相关类型 123456typedef int arr5[5];typedef arr5 * p_arr5;typedef p_arr5 arr10[10];arr5 togs; // togs是具有5个元素的int数组p_arr5 p2; // p2是一个指针， 指向具有5个元素的int数组arrp10 ap; // ap是具有10个元素的指针数组，每个指针指向具有5个元素的int数组]]></content>

