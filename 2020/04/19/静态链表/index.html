@@ -113,7 +113,7 @@
 <meta property="og:image" content="http://yoursite.com/images/20200419/20200419110312.png">
 <meta property="og:image" content="http://yoursite.com/images/20200419/20200419111718.png">
 <meta property="og:image" content="http://yoursite.com/images/20200419/20200419112943.png">
-<meta property="og:updated_time" content="2020-04-19T04:03:47.144Z">
+<meta property="og:updated_time" content="2020-04-19T06:38:04.747Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="静态链表">
 <meta name="twitter:description" content="对于线性链表，也可用一维数组来进行描述。这种描述方法便于在没有指针类型的高级程序设计语言中使用链表结构。">
@@ -410,7 +410,7 @@
                 
               
 
-              <time title="创建时间：2020-04-19 10:29:19 / 修改时间：12:03:47" itemprop="dateCreated datePublished" datetime="2020-04-19T10:29:19+08:00">2020-04-19</time>
+              <time title="创建时间：2020-04-19 10:29:19 / 修改时间：14:38:04" itemprop="dateCreated datePublished" datetime="2020-04-19T10:29:19+08:00">2020-04-19</time>
             </span>
           
 
@@ -499,6 +499,15 @@
 
 <p>执行结果：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">插入元素:</span><br><span class="line">遍历列表：  <span class="number">11</span>  <span class="number">22</span>  <span class="number">33</span>  <span class="number">44</span></span><br><span class="line">插入元素:</span><br><span class="line">遍历列表：  <span class="number">55</span>  <span class="number">11</span>  <span class="number">66</span>  <span class="number">22</span>  <span class="number">77</span>  <span class="number">33</span>  <span class="number">44</span>  <span class="number">88</span></span><br><span class="line">删除元素:</span><br><span class="line">遍历列表：  <span class="number">11</span>  <span class="number">66</span>  <span class="number">77</span>  <span class="number">33</span>  <span class="number">44</span>  <span class="number">88</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h1><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li>在插入和删除操作时，只需修改游标，不需要移动元素，从而改进了在顺序存储结构中插入和删除需要移动大量元素的缺点</li>
+</ul>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ul>
+<li>没有解决连续存储带来的表长难以确定的问题</li>
+<li>失去了顺序存储结构随机存储的特性</li>
+</ul>
+
       
     </div>
 
@@ -766,7 +775,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现"><span class="nav-number">2.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化操作"><span class="nav-number">2.1.</span> <span class="nav-text">初始化操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表插入"><span class="nav-number">2.2.</span> <span class="nav-text">链表插入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表删除"><span class="nav-number">2.3.</span> <span class="nav-text">链表删除</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#完整代码"><span class="nav-number">3.</span> <span class="nav-text">完整代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现"><span class="nav-number">2.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化操作"><span class="nav-number">2.1.</span> <span class="nav-text">初始化操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表插入"><span class="nav-number">2.2.</span> <span class="nav-text">链表插入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表删除"><span class="nav-number">2.3.</span> <span class="nav-text">链表删除</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#完整代码"><span class="nav-number">3.</span> <span class="nav-text">完整代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优缺点"><span class="nav-number">4.</span> <span class="nav-text">优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#优点"><span class="nav-number">4.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缺点"><span class="nav-number">4.2.</span> <span class="nav-text">缺点</span></a></li></ol></li></ol></div>
             
 
           </div>
